@@ -1,0 +1,26 @@
+{
+    "5f25f0de-2e6a-4b90-9664-b6c45969af98": {
+        "title": "Satisfactory",
+        "category": "Automation",
+        "maxLevel": "10",
+        "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/526870/capsule_616x353.jpg?t=1718088881",
+        "summary": "Satisfactory is an upcoming factory simulation game created by Swedish video game developer Coffee Stain Studios. It is a 3D first-person open world exploration and factory building game.",
+        "_id": "5f25f0de-2e6a-4b90-9664-b6c45969af98"
+    },
+    "9f09b62a-eada-4336-9568-27f5c2dcd1fa": {
+        "title": "EVE Online",
+        "category": "Space Simulator",
+        "maxLevel": "100",
+        "imageUrl": "https://cdn2.unrealengine.com/eve-online-1920x1080-63abdd7114f4.png",
+        "summary": "Eve Online is a space-based, persistent world massively multiplayer online role-playing game developed and published by CCP Games. Players of Eve Online can participate in a number of in-game professions and activities, including mining, piracy, manufacturing, trading, exploration, and combat.",
+        "_id": "9f09b62a-eada-4336-9568-27f5c2dcd1fa"
+    },
+    "316777fe-ebbf-4df7-98dc-06f52b196d20": {
+        "title": "World of Warcraft",
+        "category": "Multiplayer online game",
+        "maxLevel": "200",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/65/World_of_Warcraft.png",
+        "summary": "World of Warcraft is a massively multiplayer online role-playing game released in 2004 by Blizzard Entertainment.",
+        "_id": "316777fe-ebbf-4df7-98dc-06f52b196d20"
+    }
+}
