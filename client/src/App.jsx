@@ -1,11 +1,13 @@
 
-// import './App.css'
+import './App.css'
 
 function App() {
 
   return (
     <>
-      <h1>Travel with your kids</h1>
+          <h1 className="text-3xl font-bold underline">
+      Travel with your kids
+    </h1>
     </>
   )
 }
