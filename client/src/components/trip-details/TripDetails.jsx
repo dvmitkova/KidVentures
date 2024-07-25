@@ -62,21 +62,21 @@ export default function TripDetails() {
                 alt={trip.title}
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 'bold', color: '#083344' }}>
                     {trip.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ color: '#083344' }}>
                     {trip.content}
                 </Typography>
                 <div className="mt-4 flex flex-col items-center">
                     <IconButton onClick={handleFavoriteToggle} aria-label="add to favorites">
                         {favorite ? (
-                            <FavoriteIcon sx={{ fontSize: 40, color: '#fdba74' }} />
+                            <FavoriteIcon sx={{ fontSize: 40, color: '#fed7aa' }} />
                         ) : (
-                            <FavoriteBorderIcon sx={{ fontSize: 40, color: 'gray' }} />
+                            <FavoriteBorderIcon sx={{ fontSize: 40, color: '#a8a29e' }} />
                         )}
                     </IconButton>
-                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
+                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', fontWeight: 'bold', color: favorite ? '#083344' : '#a8a29e' }}>
                         {favorite ? 'Added to favorites' : 'Not a favorite'}
                     </Typography>
                 </div>
