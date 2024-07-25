@@ -1,5 +1,3 @@
-import Navbar from "../navbar/Navbar"
-
 const links = [
     { name: 'Open roles', href: '#' },
     { name: 'Internship program', href: '#' },
@@ -16,23 +14,22 @@ const links = [
   export default function Header() {
       return (
           <div className="relative isolate overflow-hidden bg-gray-900 py-48 sm:py-72">
-              <Navbar />
         <img
           alt=""
           src="public/images/header2.jpg"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
             />
-            <div className="absolute inset-0 -z-10 bg-black opacity-50"></div>
+            <div className="absolute inset-0 -z-10 bg-cyan-50 opacity-50"></div>
             
+        <div className="mx-auto max-w-5xl lg:mx-0 bg-yellow-100 bg-opacity-40 p-6 rounded-lg">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl lg:mx-0">
-            <h2 className="text-4xl font-bold text-white sm:text-6xl">Travel with your kids</h2>
-            <p className="text-2x1 mt-6 text-lg leading-8 text-white">
+            <h2 className="text-4xl font-bold text-cyan-800 sm:text-6xl">Travel with your kids</h2>
+            <p className="text-2x1 mt-6 font-bold text-lg leading-8 text-cyan-900">
             Explore the world with your little ones. Share your travel experiences, discover family-friendly destinations, and find the best activities to keep your kids entertained. Join our community of traveling parents and make every journey an adventure!
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-cyan-900 sm:grid-cols-2 md:flex lg:gap-x-10">
               {links.map((link) => (
                 <a key={link.name} href={link.href}>
                   {link.name} <span aria-hidden="true">&rarr;</span>
@@ -42,8 +39,8 @@ const links = [
             <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.name} className="flex flex-col-reverse">
-                  <dt className="text-base leading-7 text-gray-300">{stat.name}</dt>
-                  <dd className="text-2xl font-bold leading-9 tracking-tight text-white">{stat.value}</dd>
+                  <dt className="text-base leading-7 text-cyan-900">{stat.name}</dt>
+                  <dd className="text-2xl font-bold leading-9 tracking-tight text-cyan-900">{stat.value}</dd>
                 </div>
               ))}
             </dl>
