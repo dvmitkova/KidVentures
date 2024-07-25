@@ -8,6 +8,7 @@ import Register from './components/register/Register'
 import Popular from './components/popular/Popular'
 import TripCreate from './components/trip-create/TripCreate'
 import Profile from './components/profile/Profile'
+import Footer from './components/footer/Footer'
 
 
 function App() {
@@ -22,10 +23,13 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/user/profile' element={<Profile />} />
           <Route path='/trips/popular' element={<Popular />} />
-          <Route path='/trips/create' element={<TripCreate />} />
+          <Route path='/trip/create' element={<TripCreate />} />
         </Routes>
         </main>
 
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }

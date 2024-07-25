@@ -11,7 +11,7 @@ export default function Navbar() {
           <Link className="hover:text-cyan-600" to="/trips/popular">Popular trips</Link>
           {/* Logged-in users */}
           <div id="user" className="flex space-x-4 hidden">
-            <Link className="hover:text-cyan-600" to="/trips/create">Create a trip</Link>
+            <Link className="hover:text-cyan-600" to="/trip/create">Create a trip</Link>
             <Link className="hover:text-cyan-600" to="/user/profile">Profile</Link>
             <Link className="hover:text-cyan-600" to="/logout">Logout</Link>
           </div>

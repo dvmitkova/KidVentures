@@ -14,7 +14,7 @@
 - [x] Add links in navigation
   
 ## 3. Create Service Layer
-- [] Service layer architecture - feature based / function based
+- [x] Service layer architecture - feature based / function based
 - [] Abstract requester - single endpoint fetcher
 - [] Add games api
 - [] Preseed practice server - after creating games in postman, copy the objects and paste them in a new file in server/data
