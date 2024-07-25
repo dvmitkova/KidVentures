@@ -1,12 +1,12 @@
-import SingleTrip from "../single-trip/SingleTrip";
+import TripCard from "../trip-card/TripCard";
 
 export default function Popular() {
     return (
         <>
-            <h1>Popular</h1>
-            <SingleTrip />
-            <SingleTrip />
-            <SingleTrip />
+            <TripCard />
+            <TripCard />
+            <TripCard />
+
         </>
     )
 }

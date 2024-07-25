@@ -10,8 +10,8 @@
 ## 2. React Router
 - [x] Install react-router-dom
 - [x] Setup react-router-dom
-- [] Add routes in App.jsx
-- [] Add links in navigation
+- [x] Add routes in App.jsx
+- [x] Add links in navigation
   
 ## 3. Create Service Layer
 - [] Service layer architecture - feature based / function based

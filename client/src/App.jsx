@@ -6,7 +6,8 @@ import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
 import Popular from './components/popular/Popular'
-import CreateTrip from './components/createTrip/CreateTrip'
+import TripCreate from './components/trip-create/TripCreate'
+import Profile from './components/profile/Profile'
 
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/user/profile' element={<Profile />} />
           <Route path='/trips/popular' element={<Popular />} />
-          <Route path='/trips/create' element={<CreateTrip />} />
+          <Route path='/trips/create' element={<TripCreate />} />
         </Routes>
         </main>
 
