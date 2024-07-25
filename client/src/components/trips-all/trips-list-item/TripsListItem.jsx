@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function TripsListItem({
@@ -13,25 +12,18 @@ export default function TripsListItem({
     imageUrl
 }) {
     return (
-      <Card sx={{ width: 300, display: 'flex', flexDirection: 'column' }}>
-        <CardActionArea component={Link} to={`/trips/${_id}/details`} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-          <CardMedia
-            component="img"
-            sx={{
-              height: 200, // Fixed height for image
-              width: '100%', // Full width of the card
-              objectFit: 'cover', // Crop the image to fit the fixed height
-            }}
-            image={imageUrl}
-            alt={title}
+      <div className="relative max-w-xs bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+      <Link to={`/trips/${_id}/details`} className="block">
+          <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-52 object-cover transition-opacity duration-300 ease-in-out"
           />
-          <CardContent sx={{ flex: 1 }}>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+          <div className="p-4">
+              <h5 className="text-xl font-bold text-gray-800">{title}</h5>
+          </div>
+      </Link>
+  </div>
   );
 }
 
