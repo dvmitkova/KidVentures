@@ -1,9 +1,9 @@
 # Games-Play-Softuni-Workshop
 
 ## 1. Initialize Project
-- [] Initialize git repo
-- [] Add server (Softuni Practice Server)
-- [] Add base vite react project as client
+- [x] Initialize git repo
+- [x] Add server (Softuni Practice Server)
+- [x] Add base vite react project as client
 - [] CleanUp client
 - [] Add project resources
 - [] Convert html to jsx
