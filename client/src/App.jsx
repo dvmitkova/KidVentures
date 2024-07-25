@@ -1,14 +1,16 @@
 
 import './App.css'
+import Header from './components/header/Header'
+import Navbar from './components/navbar/Navbar'
 
 function App() {
 
   return (
-    <>
-          <h1 className="text-3xl font-bold underline">
-      Travel with your kids
-    </h1>
-    </>
+    <div id='box'>
+        <Navbar />
+
+      <Header />
+    </div>
   )
 }
 

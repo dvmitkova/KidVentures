@@ -4,14 +4,12 @@
 - [x] Initialize git repo
 - [x] Add server (Softuni Practice Server)
 - [x] Add base vite react project as client
-- [] CleanUp client
-- [] Add project resources
-- [] Convert html to jsx
-- [] Separate html into components
+- [x] CleanUp client
+- [x] Add project components
 
 ## 2. React Router
-- [] Install react-router-dom
-- [] Setup react-router-dom
+- [x] Install react-router-dom
+- [x] Setup react-router-dom
 - [] Add routes in App.jsx
 - [] Add links in navigation
   
