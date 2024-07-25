@@ -8,11 +8,11 @@ export default function Navbar() {
           <Link className="home" to="/">KidVentures</Link>
         </h1>
         <nav className="flex space-x-4 text-cyan-900 font-bold">
-          <Link className="hover:text-cyan-600" to="/games">Popular trips</Link>
+          <Link className="hover:text-cyan-600" to="/trips/popular">Popular trips</Link>
           {/* Logged-in users */}
-          <div id="user" className="hidden">
-            <Link className="hover:text-cyan-600" to="/games/create">Add adventure</Link>
-            <Link className="hover:text-cyan-600" to="/games/create">Profile</Link>
+          <div id="user" className="flex space-x-4">
+            <Link className="hover:text-cyan-600" to="/trips/create">Create a trip</Link>
+            <Link className="hover:text-cyan-600" to="/user/profile">Profile</Link>
             <Link className="hover:text-cyan-600" to="/logout">Logout</Link>
           </div>
           {/* Guest users */}
