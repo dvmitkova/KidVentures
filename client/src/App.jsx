@@ -10,6 +10,7 @@ import TripCreate from './components/trip-create/TripCreate'
 import Profile from './components/profile/Profile'
 import Footer from './components/footer/Footer'
 import TripsAll from './components/trips-all/TripsAll'
+import TripDetails from './components/trip-details/TripDetails'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='/user/profile' element={<Profile />} />
           <Route path='/trips/popular' element={<TripsPopular />} />
           <Route path='/trips/all' element={<TripsAll />} />
+          <Route path='/trips/:tripId/details' element={<TripDetails />} />
           <Route path='/trip/create' element={<TripCreate />} />
         </Routes>
         </main>

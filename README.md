@@ -1,4 +1,4 @@
-# Games-Play-Softuni-Workshop
+# KidVentures - Travel with your kids
 
 ## 1. Initialize Project
 - [x] Initialize git repo
@@ -15,17 +15,17 @@
   
 ## 3. Create Service Layer
 - [x] Service layer architecture - feature based / function based
-- [] Abstract requester - single endpoint fetcher
-- [] Add games api
-- [] Preseed practice server - after creating games in postman, copy the objects and paste them in a new file in server/data
+- [x] Abstract requester - single endpoint fetcher
+- [x] Add trips api
+- [x] Preseed practice server - after creating trips in postman, copy the objects and paste them in a new file in server/data
 
 ## 4. Page Implementations
-- [] Game list
-- [] Details 
+- [x] Trip list
+- [x] Details 
     - Details link
     - Details route
     - API function - getOne
-- [] Home - Latest Games
+- [] Home - Latest Trips
 
 ## 5. Comments (Advanced)
 - [] Create service for nested resource comments

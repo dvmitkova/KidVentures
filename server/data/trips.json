@@ -106,6 +106,13 @@
             "content": "Our family trip to Tokyo was a fantastic journey into a vibrant city! From the bustling streets of Shibuya to the serene beauty of Meiji Shrine, Tokyo offered a mix of excitement and tranquility. We enjoyed delicious sushi, explored fascinating neighborhoods, and immersed ourselves in the unique culture. Tokyo was an unforgettable experience for all of us.",
             "_id": "g6h4f8d0-4e7c-5f2b-c6d4-9e7d5f8c9g0d"
         }
+        },
+        "comments": {
+            "5a3d062d-cc5d-4f0b-a571-7e0d30514816": {
+                "author": "Didi",
+                "comment": "Looks great!",
+                "_id": "5a3d062d-cc5d-4f0b-a571-7e0d30514816"
+            }
         }
     },
     "dropdown": {
