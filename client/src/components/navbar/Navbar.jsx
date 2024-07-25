@@ -9,6 +9,7 @@ export default function Navbar() {
         </h1>
         <nav className="flex space-x-4 text-cyan-900 font-bold">
           <Link className="hover:text-cyan-600" to="/trips/popular">Popular trips</Link>
+          <Link className="hover:text-cyan-600" to="/trips/all">All trips</Link>
           {/* Logged-in users */}
           <div id="user" className="flex space-x-4 hidden">
             <Link className="hover:text-cyan-600" to="/trip/create">Create a trip</Link>

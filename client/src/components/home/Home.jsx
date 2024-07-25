@@ -1,11 +1,11 @@
 import Header from "../header/Header";
-import Popular from "../popular/Popular";
+import TripsPopular from "../trips-popular/TripsPopular"
 
 export default function Home() {
   return (
     <>
       <Header />
-      <Popular />
+      <TripsPopular />
     </>
   );
 }
