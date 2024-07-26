@@ -18,6 +18,8 @@ import { AuthContext } from './contexts/AuthContext'
 
 function App() {
   useScrollToTop();
+
+  //TODO: move this outside the app
   const [authState, setAuthState] = useState({});
 
   const changeAuthState = (state) => {
@@ -25,6 +27,7 @@ function App() {
   }
 
   const contextData = {
+    userId: authState._id,
     email: authState.email,
     accessToken: authState.accessToken,
     isAuthenticated: !!authState.email,

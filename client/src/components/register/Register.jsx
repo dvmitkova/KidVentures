@@ -1,4 +1,30 @@
+import { useNavigate } from "react-router-dom";
+import { useRegister } from "../../hooks/useAuth"
+import { useForm } from "../../hooks/useForm";
+import { useState } from "react";
+
+const initialValues = { email: '', password: '', rePassword: '' };
+
 export default function Register() {
+  const [error, setError] = useState('');
+  const register = useRegister();
+  const navigate = useNavigate();
+
+  const registerHandler = async (values) => {
+    if (values.password !== values.rePassword) {
+      return setError('Password missmatch!');
+    }
+
+    try {
+      await register(values.email, values.password);
+      navigate('/');
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  const {values, changeHandler, submitHandler} = useForm(initialValues, registerHandler)
+
     return (
         <>
         <section className="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
@@ -21,7 +47,7 @@ export default function Register() {
                             We are The Lotus Team
                           </h4>
                         </div>
-                        <form>
+                        <form onSubmit={submitHandler}>
                           <p className="mb-4">Create a new account</p>
                           {/*Username input*/}
                           <div
@@ -32,13 +58,16 @@ export default function Register() {
                               type="text"
                               className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                               id="exampleFormControlInput1"
-                              placeholder="Username"
+                              placeholder="Email"
+                              name="email"
+                              value={values.email}
+                              onChange={changeHandler}
                             />
                             <label
                               htmlFor="exampleFormControlInput1"
                               className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
                             >
-                              Username
+                              Email
                             </label>
                           </div>
                           {/*Password input*/}
@@ -51,6 +80,9 @@ export default function Register() {
                               className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                               id="exampleFormControlInput11"
                               placeholder="Password"
+                              name="password"
+                              value={values.password}
+                              onChange={changeHandler}
                             />
                             <label
                               htmlFor="exampleFormControlInput11"
@@ -59,6 +91,29 @@ export default function Register() {
                               Password
                             </label>
                           </div>
+
+                          {/* RePassword inpur */}
+                          <div
+                            className="relative mb-4"
+                            data-twe-input-wrapper-init=""
+                          >
+                            <input
+                              type="password"
+                              className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                              id="exampleFormControlInput11"
+                              placeholder="Repeat your password"
+                              name="rePassword"
+                              value={values.rePassword}
+                              onChange={changeHandler}
+                            />
+                            <label
+                              htmlFor="exampleFormControlInput11"
+                              className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
+                            >
+                              Repeat your password
+                            </label>
+                          </div>
+
                           {/*Submit button*/}
                           <div className="mb-12 pb-1 pt-1 text-center">
                             <button
@@ -73,6 +128,10 @@ export default function Register() {
                             >
                               Register
                             </button>
+                            {error && (
+                              <p className="mb-0 me-2">{error}</p>
+                            )}
+
                             {/*Forgot password link*/}
                             <a href="#!">Forgot password?</a>
                           </div>
