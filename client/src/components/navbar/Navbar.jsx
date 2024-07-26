@@ -19,6 +19,12 @@ export default function Navbar() {
           <div className="flex space-x-4">
             <Link className="hover:text-cyan-600 transition" to="/trip/create">
               Create a trip
+              </Link>
+              <Link className="hover:text-cyan-600 transition" to="/register">
+              Register
+              </Link>
+              <Link className="hover:text-cyan-600 transition" to="/login">
+              Login
             </Link>
             <Link className="hover:text-cyan-600 transition" to="/user/profile">
               Profile

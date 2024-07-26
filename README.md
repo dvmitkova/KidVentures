@@ -34,3 +34,23 @@
 - [x] Add comments in the component
 - [x] Clear form
 
+## 6. API Hooks
+- [ ] Form Hook
+- [ ] TripAPI Hooks
+- [ ] Comment Hooks
+
+## 7. Authentication
+- [ ] Auth API
+- [ ] Auth API hook
+- [ ] Auth state & context - state of authenticated user
+- [ ] Login
+- [ ] Register
+- [ ] Logout
+
+## 8. UI Implementation
+- [ ] Dynamic navigation
+- [ ] Create a trip
+    - [ ] API function
+    - [ ] Hook
+
+
