@@ -40,10 +40,14 @@
 - [ ] Comment Hooks
 
 ## 7. Authentication
-- [ ] Auth API
-- [ ] Auth API hook
-- [ ] Auth state & context - state of authenticated user
-- [ ] Login
+- [x] Auth API
+    - [x] Login
+    - [ ] Register
+    - [ ] Logout
+- [x] Auth API hook
+- [x] Auth state & context - state of authenticated user
+- [x] Token management
+- [x] Login
 - [ ] Register
 - [ ] Logout
 

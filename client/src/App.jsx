@@ -11,11 +11,28 @@ import Profile from './components/profile/Profile'
 import Footer from './components/footer/Footer'
 import TripsAll from './components/trips-all/TripsAll'
 import TripDetails from './components/trip-details/TripDetails'
+import useScrollToTop from './hooks/useScrollToTop'
+import { useState } from 'react'
+import { AuthContext } from './contexts/AuthContext'
 
 
 function App() {
+  useScrollToTop();
+  const [authState, setAuthState] = useState({});
+
+  const changeAuthState = (state) => {
+    setAuthState(state)
+  }
+
+  const contextData = {
+    email: authState.email,
+    accessToken: authState.accessToken,
+    isAuthenticated: !!authState.email,
+    changeAuthState,
+  }
 
   return (
+    <AuthContext.Provider value={contextData}>
     <div id='box'>
         <Navbar />
       <main id='main-content'>
@@ -34,7 +51,8 @@ function App() {
       <footer>
         <Footer />
       </footer>
-    </div>
+      </div>
+      </AuthContext.Provider>
   )
 }
 
