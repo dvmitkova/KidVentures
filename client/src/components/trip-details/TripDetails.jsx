@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import tripsAPI from "../../api/tripsAPI";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,6 +9,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
 import commentsAPI from "../../api/commentsAPI";
 import { useTripsGetOne } from "../../hooks/useTrips";
+import { useState } from "react";
 
 export default function TripDetails() {
   const { tripId } = useParams();

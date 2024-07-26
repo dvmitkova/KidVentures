@@ -24,7 +24,7 @@ export function useTripsGetOne(tripId) {
           const result = await tripsAPI.getOne(tripId);
           setTrip(result);
         })();
-    }, []);
+    }, [tripId]);
     
     return [
         trip,

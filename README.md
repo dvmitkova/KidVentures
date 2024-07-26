@@ -36,7 +36,7 @@
 
 ## 6. API Hooks
 - [x] Form Hook
-- [ ] TripAPI Hooks
+- [x] TripAPI Hooks
 - [ ] Comment Hooks
 
 ## 7. Authentication
