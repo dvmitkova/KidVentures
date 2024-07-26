@@ -5,6 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 export const useLogin = () => {
     const { changeAuthState } = useContext(AuthContext);
 
+    //TODO: Hash password!
   const loginHandler = async (email, password) => {
       const result = await login(email, password);
 

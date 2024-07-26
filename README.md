@@ -42,13 +42,13 @@
 ## 7. Authentication
 - [x] Auth API
     - [x] Login
-    - [ ] Register
+    - [x] Register
     - [ ] Logout
 - [x] Auth API hook
 - [x] Auth state & context - state of authenticated user
 - [x] Token management
 - [x] Login
-- [ ] Register
+- [x] Register
 - [ ] Logout
 
 ## 8. UI Implementation
