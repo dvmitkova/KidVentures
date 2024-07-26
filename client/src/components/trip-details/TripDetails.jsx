@@ -10,20 +10,15 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
 import commentsAPI from "../../api/commentsAPI";
+import { useTripsGetOne } from "../../hooks/useTrips";
 
 export default function TripDetails() {
-  const [trip, setTrip] = useState({});
+  const { tripId } = useParams();
   const [username, setUsername] = useState("");
   const [comment, setComment] = useState("");
   const [favorite, setFavorite] = useState(false);
-  const { tripId } = useParams();
+  const [trip, setTrip] = useTripsGetOne(tripId);
 
-  useEffect(() => {
-    (async () => {
-      const result = await tripsAPI.getOne(tripId);
-      setTrip(result);
-    })();
-  }, []);
 
   const commentSubmitHandler = async (e) => {
     e.preventDefault();

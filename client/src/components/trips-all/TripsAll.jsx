@@ -1,9 +1,9 @@
 import TripsListItem from "./trips-list-item/TripsListItem";
 import { Box } from "@mui/material";
-import { useGamesGetAll } from "../../hooks/useTrips";
+import { useTripsGetAll } from "../../hooks/useTrips";
 
 export default function TripsAll() {
-        const [trips] = useGamesGetAll()
+        const [trips] = useTripsGetAll()
     
         return (
             <Box
