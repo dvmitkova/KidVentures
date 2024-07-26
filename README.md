@@ -35,7 +35,7 @@
 - [x] Clear form
 
 ## 6. API Hooks
-- [ ] Form Hook
+- [x] Form Hook
 - [ ] TripAPI Hooks
 - [ ] Comment Hooks
 
@@ -52,5 +52,5 @@
 - [ ] Create a trip
     - [ ] API function
     - [ ] Hook
-
+- [ ] Latest trips
 

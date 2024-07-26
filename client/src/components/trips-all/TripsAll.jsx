@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
-import tripsAPI from "../../api/tripsAPI";
 import TripsListItem from "./trips-list-item/TripsListItem";
 import { Box } from "@mui/material";
+import { useGamesGetAll } from "../../hooks/useTrips";
 
 export default function TripsAll() {
-    const [trips, setTrips] = useState([]);
-    
-        useEffect(() => {//! НЕ ПРИЕМА ПРОМИС
-            (async () => {
-                const result = await tripsAPI.getAll();
-    
-                setTrips(result);
-            })();
-        }, []);
+        const [trips] = useGamesGetAll()
     
         return (
             <Box
