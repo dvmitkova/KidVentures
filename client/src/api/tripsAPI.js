@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const BASE_URL = 'http://localhost:3030/jsonstore/trips/trips/details'
+const BASE_URL = 'http://localhost:3030/data/trips'
 
 export const getAll = async () => {
     const result = await request.get(BASE_URL);
@@ -11,9 +11,12 @@ export const getAll = async () => {
 
 export const getOne = (tripId) => request.get(`${BASE_URL}/${tripId}`);
 
+export const create = (tripData) => request.post(`${BASE_URL}`, tripData)
+
 const tripsAPI = {
     getAll,
-    getOne
+    getOne,
+    create
 }
 
 export default tripsAPI;
