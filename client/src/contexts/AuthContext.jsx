@@ -6,7 +6,8 @@ export const AuthContext = createContext({
   email: "",
   accessToken: "",
   isAuthenticated: false,
-  changeAuthState: (authState = {}) => null,
+    changeAuthState: (authState = {}) => null,
+    logout: () => null,
 });
 
 // Readme - ## 9. Refactoring - 1. Extract auth state from App.js
@@ -20,12 +21,17 @@ export function AuthContextProvider(props) {
     setAuthState(state);
   };
 
+    const logout = () => {
+      setAuthState(null)
+  };
+
   const contextData = {
     userId: authState._id,
     email: authState.email,
     accessToken: authState.accessToken,
     isAuthenticated: !!authState.email,
     changeAuthState,
+    logout,
   };
 
   return (

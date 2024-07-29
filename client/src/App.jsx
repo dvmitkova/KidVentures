@@ -13,6 +13,7 @@ import TripsAll from './components/trips-all/TripsAll'
 import TripDetails from './components/trip-details/TripDetails'
 import useScrollToTop from './hooks/useScrollToTop'
 import { AuthContextProvider } from './contexts/AuthContext'
+import Logout from './components/logout/Logout'
 
 
 function App() {
@@ -27,10 +28,12 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/logout' element={<Logout />} />
           <Route path='/user/profile' element={<Profile />} />
           <Route path='/trips/popular' element={<TripsPopular />} />
           <Route path='/trips/all' element={<TripsAll />} />
           <Route path='/trips/:tripId/details' element={<TripDetails />} />
+          <Route path='/trip/create' element={<TripCreate />} />
           <Route path='/trip/create' element={<TripCreate />} />
         </Routes>
         </main>
