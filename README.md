@@ -59,7 +59,8 @@
 - [ ] Latest trips
 
 ## 9. Refactoring
-- [ ] Extract auth state from App component
+- [x] Extract auth state from App component
+- [x] Persist auth state
 
 
 
