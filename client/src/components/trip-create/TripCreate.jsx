@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -17,9 +16,9 @@ const initialValues = {
   image: "",
 };
 
-export default function TripCreate() {
-    const navigate = useNavigate()
+export default function TripCreate() { 
     const createTrip = useCreateTrip();
+    const navigate = useNavigate();
 
     const createHandler = async (values) => {
       try {

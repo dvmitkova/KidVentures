@@ -52,9 +52,9 @@
 - [ ] Logout
 
 ## 8. UI Implementation
-- [ ] Dynamic navigation
-- [ ] Create a trip
-    - [ ] API function
-    - [ ] Hook
+- [x] Dynamic navigation
+- [x] Create a trip
+    - [x] API function
+    - [x] Hook
 - [ ] Latest trips
 
