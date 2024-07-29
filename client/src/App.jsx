@@ -12,33 +12,14 @@ import Footer from './components/footer/Footer'
 import TripsAll from './components/trips-all/TripsAll'
 import TripDetails from './components/trip-details/TripDetails'
 import useScrollToTop from './hooks/useScrollToTop'
-import { useState } from 'react'
-import { AuthContext } from './contexts/AuthContext'
+import { AuthContextProvider } from './contexts/AuthContext'
 
 
 function App() {
   useScrollToTop();
 
-  //TODO: move this outside the app
-  const [authState, setAuthState] = useState({});
-  
-  const changeAuthState = (state) => {
-    //TODO: This is a quick solution - fix it by implementing persistent AuthState!!!
-    localStorage.setItem('accessToken', state.accessToken);
-
-    setAuthState(state)
-  }
-
-  const contextData = {
-    userId: authState._id,
-    email: authState.email,
-    accessToken: authState.accessToken,
-    isAuthenticated: !!authState.email,
-    changeAuthState,
-  }
-
   return (
-    <AuthContext.Provider value={contextData}>
+    <AuthContextProvider>
     <div id='box'>
         <Navbar />
       <main id='main-content'>
@@ -58,7 +39,7 @@ function App() {
         <Footer />
       </footer>
       </div>
-      </AuthContext.Provider>
+      </AuthContextProvider>
   )
 }
 

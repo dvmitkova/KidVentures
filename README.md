@@ -58,3 +58,13 @@
     - [x] Hook
 - [ ] Latest trips
 
+## 9. Refactoring
+- [ ] Extract auth state from App component
+
+
+
+## Notes
+1. Latest Trips
+    1. URL `http://localhost:3030/data/trips?sortBy=_createdOn%20desc&pageSize=3`
+    2. Use URLSearchParams
+2. seedData - line 1341 in server.js

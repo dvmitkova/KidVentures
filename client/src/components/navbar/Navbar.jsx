@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Navbar() {
-  const { isAuthenticated, email } = useContext(AuthContext);
+  const { isAuthenticated, email } = useAuthContext();
 
   return (
     <header className="bg-gradient-to-r from-cyan-100 via-lime-100 to-amber-100 text-cyan-900 py-4">
