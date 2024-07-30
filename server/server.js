@@ -1349,7 +1349,8 @@
                 "content": "Our Bali trip was a tropical paradise! We loved lounging on the beautiful beaches, exploring lush rice terraces, and discovering vibrant local culture. The kids enjoyed snorkeling in clear waters, while we relaxed in serene surroundings. Bali offered the perfect mix of relaxation and adventure for our family.",
                 "_createdOn": 1722333145539,
                 "_id": "88eed77f-7169-44a4-add6-c43eded349e2"
-            }
+            },
+            
         }
     };
     var rules$1 = {
