@@ -31,10 +31,19 @@ export default function TripDetails() {
   const [trip] = useTripsGetOne(tripId);
   const { isAuthenticated } = useAuthContext();
 
-  const { changeHandler, submitHandler, values } = useForm(
-    initialValues,
-    ({ comment }) => {
-      createComment(tripId, comment);
+  const {
+    changeHandler,
+    submitHandler,
+    values
+  } = useForm(initialValues, async ({ comment }) => {
+      try {
+        const newComment = await createComment(tripId, comment);
+
+        setComments(oldComments => [...oldComments, newComment]);
+      } catch (err) {
+        alert(err.message);
+      }
+      
     }
   );
 
