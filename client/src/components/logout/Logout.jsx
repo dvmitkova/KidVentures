@@ -1,10 +1,12 @@
 import { Navigate } from "react-router-dom"
-import { useLogout } from "../../hooks/useAuth"
+import { useAuthContext } from "../../contexts/AuthContext"
 
 export default function Logout() {
-    const logout = useLogout();
+    const { Logout } = useAuthContext();
 
-    logout();
+    Logout(); //local logout
+
+    //TODO: logout from server
 
     return <Navigate to='/' />
 }
