@@ -21,16 +21,13 @@ const initialValues = {
 };
 
 export default function TripDetails() {
-  // const [trip, setTrip] = useTripsGetOne(tripId);
-  // const [comment, setComment] = useState("");
   const [favorite, setFavorite] = useState(false);
-
   const { tripId } = useParams();
   const [comments, setComments] = useGetAllComments(tripId);
   const createComment = useCreateComment();
   const [trip] = useTripsGetOne(tripId);
   const { isAuthenticated } = useAuthContext();
-
+  const { userId } = useAuthContext();
   const {
     changeHandler,
     submitHandler,
@@ -43,29 +40,10 @@ export default function TripDetails() {
       } catch (err) {
         alert(err.message);
       }
-      
     }
-  );
-
-  // const commentSubmitHandler = async (e) => {
-  //   e.preventDefault();
-
-  //   console.log(username, comment);
-
-  //   const newComment = await commentsAPI.create(tripId, username, comment);
-
-  //   //TODO: this should be refactored
-  //   setTrip((prevState) => ({
-  //     ...prevState,
-  //     comments: {
-  //       ...prevState.comments,
-  //       [newComment._id]: newComment,
-  //     },
-  //   }));
-
-  //   setUsername("");
-  //   setComment("");
-  // };
+    );
+  
+  const isOwner = userId === trip._ownerId;
 
   const handleFavoriteToggle = () => {
     setFavorite(!favorite);
@@ -102,6 +80,22 @@ export default function TripDetails() {
               {trip.content}
             </Typography>
             <div className="mt-4 flex flex-col items-center">
+              {isOwner && (<div className="buttons flex flex-row justify-center">
+                <button
+                  type="submit"
+                  className="w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                >
+                  Edit
+                </button>
+                <button
+                  type="submit"
+                  className="w-24 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                >
+                  Delete
+                </button>
+              </div>
+              )}
+              {!isOwner && (<div className="favorite">
               <IconButton
                 onClick={handleFavoriteToggle}
                 aria-label="add to favorites"
@@ -122,7 +116,8 @@ export default function TripDetails() {
                 }}
               >
                 {favorite ? "Added to favorites" : "Not a favorite"}
-              </Typography>
+                </Typography>
+                </div>)}
             </div>
           </CardContent>
         </CardActionArea>
@@ -140,16 +135,6 @@ export default function TripDetails() {
                   </h1>
                 </div>
                 <form onSubmit={submitHandler} className="space-y-4">
-                  {/* <div>
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">Your Name</label>
-                <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="mt-2 block w-full rounded-md border-gray-300 shadow focus:border-orange-200 focus:ring focus:ring-orange-200 focus:ring-opacity-100"
-                />
-              </div> */}
                   <div>
                     <label
                       htmlFor="comment"

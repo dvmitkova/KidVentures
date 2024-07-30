@@ -61,7 +61,7 @@
 ## 9. Refactoring
 - [x] Extract auth state from App component
 - [x] Persist auth state
-- [ ] Comments
+- [x] Comments - refactored
 
 ## Notes
 1. Latest Trips
