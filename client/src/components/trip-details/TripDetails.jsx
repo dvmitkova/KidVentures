@@ -190,7 +190,7 @@ export default function TripDetails() {
                     color="#083344"
                     sx={{ fontWeight: "bold" }}
                   >
-                    Username:
+                    {comment.author.email}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     {comment.text}
