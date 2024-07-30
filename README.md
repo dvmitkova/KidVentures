@@ -43,13 +43,13 @@
 - [x] Auth API
     - [x] Login
     - [x] Register
-    - [ ] Logout
+    - [x] Logout
 - [x] Auth API hook
 - [x] Auth state & context - state of authenticated user
 - [x] Token management
 - [x] Login
 - [x] Register
-- [ ] Logout
+- [x] Logout
 
 ## 8. UI Implementation
 - [x] Dynamic navigation
