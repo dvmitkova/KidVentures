@@ -1390,7 +1390,23 @@
                 "_createdOn": 1722515921768,
                 "_id": "g6h4f8d0-4e7c-5f2b-c6d4-9e7d5f8c9g0d"
             }            
-        } 
+        },
+        comments: {
+            "b734da0c-f637-47a1-a7b2-0399ac3e4161": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "tripId": "88eed77f-7169-44a4-add6-c43eded349e2",
+                "text": "sgsgsh",
+                "_createdOn": 1722518347900,
+                "_id": "b734da0c-f637-47a1-a7b2-0399ac3e4161"
+            },
+            "b734da0c-f637-47a1-a7b2-0399ac3e4162": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "tripId": "88eed77f-7169-44a4-add6-c43eded349e2",
+                "text": "test",
+                "_createdOn": 1722518347901,
+                "_id": "b734da0c-f637-47a1-a7b2-0399ac3e4162"
+            }
+        }
     };
     var rules$1 = {
     	users: {
