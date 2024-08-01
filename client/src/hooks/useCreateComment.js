@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
-import commentsAPI from "../api/commentsAPI"
+import commentsAPI from "../api/commentsAPI";
 
 export function useCreateComment() {
-    const createHandler = (tripId, comment) => commentsAPI.create(tripId, comment)
-      
+  const createHandler = (tripId, comment) =>
+    commentsAPI.create(tripId, comment);
 
-    return createHandler;
+  return createHandler;
 }
 
 export function useGetAllComments(tripId) {
-    const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([]);
 
-    useEffect(() => {
-        (async () => {
-            const result = await commentsAPI.getAll(tripId);
-            setComments(result);
-        })();
-    }, [tripId])
+  useEffect(() => {
+    (async () => {
+      try {
+        const result = await commentsAPI.getAll(tripId);
+        setComments(result);
+      } catch (err) {
+        console.error(err.message);
+      }
+    })();
+  }, [tripId]);
 
-    return [comments, setComments]
+  return [comments, setComments];
 }

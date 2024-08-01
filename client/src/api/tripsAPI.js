@@ -11,12 +11,15 @@ export const getAll = async () => {
 
 export const getOne = (tripId) => request.get(`${BASE_URL}/${tripId}`);
 
-export const create = (tripData) => request.post(`${BASE_URL}`, tripData)
+export const create = (tripData) => request.post(`${BASE_URL}`, tripData);
+
+export const remove = (tripId) => request.del(`${BASE_URL}/${tripId}`)
 
 const tripsAPI = {
     getAll,
     getOne,
-    create
+    create,
+    remove
 }
 
 export default tripsAPI;

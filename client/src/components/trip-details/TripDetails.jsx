@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -15,12 +15,14 @@ import {
   useCreateComment,
 } from "../../hooks/useCreateComment";
 import { useAuthContext } from "../../contexts/AuthContext";
+import tripsAPI from "../../api/tripsAPI";
 
 const initialValues = {
   comment: "",
 };
 
 export default function TripDetails() {
+  const navigate = useNavigate();
   const [favorite, setFavorite] = useState(false);
   const { tripId } = useParams();
   const [comments, setComments] = useGetAllComments(tripId);
@@ -42,6 +44,15 @@ export default function TripDetails() {
       }
     }
     );
+  
+  const tripDeleteHandler = async () => {
+    try {
+      await tripsAPI.remove(tripId);
+      navigate('/');
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
   
   const isOwner = userId === trip._ownerId;
 
@@ -89,6 +100,7 @@ export default function TripDetails() {
                 </button>
                 <button
                   type="submit"
+                  onClick={tripDeleteHandler}
                   className="w-24 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
                 >
                   Delete
