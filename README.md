@@ -50,6 +50,7 @@
 - [x] Login
 - [x] Register
 - [x] Logout
+- [ ] Route guards
 
 ## 8. UI Implementation
 - [x] Dynamic navigation
@@ -57,6 +58,7 @@
     - [x] API function
     - [x] Hook
 - [ ] Latest trips
+- [ ] Edit Page - edit and delete functionality
 
 ## 9. Refactoring
 - [x] Extract auth state from App component
