@@ -19,9 +19,9 @@ export default function Navbar() {
             </Link>
             <Link
               className="hover:text-cyan-600 transition"
-              to="/trips/popular"
+              to="/trips/latest"
             >
-              Popular trips
+              Latest trips
             </Link>
           </div>
           {!isAuthenticated ? (
@@ -37,7 +37,7 @@ export default function Navbar() {
             <div className="flex space-x-4">
               <Link
                 className="hover:text-cyan-600 transition"
-                to="/trip/create"
+                to="/trips/create"
               >
                 Create a trip
               </Link>

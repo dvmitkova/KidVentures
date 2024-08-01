@@ -65,6 +65,7 @@
 - [x] Extract auth state from App component
 - [x] Persist auth state
 - [x] Comments - refactored
+- [ ] Add route guards
 
 ## Notes
 1. Latest Trips
