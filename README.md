@@ -25,7 +25,7 @@
     - Details link
     - Details route
     - API function - getOne
-- [] Home - Latest Trips
+- [x] Home - Latest Trips
 
 ## 5. Comments (Advanced)
 - [x] Create service for nested resource comments
@@ -37,7 +37,7 @@
 ## 6. API Hooks
 - [x] Form Hook
 - [x] TripAPI Hooks
-- [ ] Comment Hooks
+- [x] Comment Hooks
 
 ## 7. Authentication
 - [x] Auth API
@@ -57,7 +57,7 @@
 - [x] Create a trip
     - [x] API function
     - [x] Hook
-- [ ] Latest trips
+- [x] Latest trips
 - [x] Edit Trip
 - [x] Delete Trip
 
@@ -65,7 +65,7 @@
 - [x] Extract auth state from App component
 - [x] Persist auth state
 - [x] Comments - refactored
-- [ ] Add route guards
+- [x] Add route guards
 
 ## Notes
 1. Latest Trips
