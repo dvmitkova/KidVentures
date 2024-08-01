@@ -1,7 +1,10 @@
+import { useNavigate, useParams } from "react-router-dom";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Button, Card, CardContent, IconButton, TextField, Typography } from "@mui/material";
 import { useForm } from "../../hooks/useForm";
 import { useState } from "react";
+import { useTripsGetOne } from "../../hooks/useTrips";
+import tripsAPI from "../../api/tripsAPI";
 
 const initialValues = {
     title: '',
@@ -10,23 +13,25 @@ const initialValues = {
 }
 
 export default function TripEdit() {
+    const navigate = useNavigate();
+    const { tripId } = useParams();
+    const [trip] = useTripsGetOne(tripId);
+    console.log(trip);
     const {
         changeHandler,
         submitHandler,
         values
-    } = useForm(initialValues, () => {
-        console.log(values);
-    });
-    const [selectedImage, setSelectedImage] = useState(null);
+    } = useForm(Object.assign(initialValues, trip), async (values) => {
+        const isConfirmed = confirm('Are you sure you want to update your trip?');
 
-    const handleImageUpload = async (imageFile) => {
-        if (!imageFile) return '';
-  
-        // Implement image upload logic here
-        // For now, we'll return a placeholder URL
-        // In a real application, you would upload the image to a server or cloud storage
-        return URL.createObjectURL(imageFile);
-      };
+        if (isConfirmed) {
+                    await tripsAPI.update(tripId, values);
+
+        navigate(`/trips/${tripId}/details`);
+        }
+    });
+
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];

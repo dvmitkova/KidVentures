@@ -13,13 +13,16 @@ export const getOne = (tripId) => request.get(`${BASE_URL}/${tripId}`);
 
 export const create = (tripData) => request.post(`${BASE_URL}`, tripData);
 
-export const remove = (tripId) => request.del(`${BASE_URL}/${tripId}`)
+export const remove = (tripId) => request.del(`${BASE_URL}/${tripId}`);
+
+export const update = (tripId, tripData) => request.put(`${BASE_URL}/${tripId}`, tripData)
 
 const tripsAPI = {
     getAll,
     getOne,
     create,
-    remove
+    remove, 
+    update
 }
 
 export default tripsAPI;

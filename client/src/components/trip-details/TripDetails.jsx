@@ -46,6 +46,12 @@ export default function TripDetails() {
     );
   
   const tripDeleteHandler = async () => {
+    const isConfirmed = confirm(`Are you sure you want to delete ${trip.title}?`);
+
+    if (!isConfirmed) {
+      return
+    }
+
     try {
       await tripsAPI.remove(tripId);
       navigate('/');
@@ -187,7 +193,7 @@ export default function TripDetails() {
                     color="#083344"
                     sx={{ fontWeight: "bold" }}
                   >
-                    {comment.author.email}
+                    {comment.author?.email}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     {comment.text}
