@@ -14,6 +14,7 @@ import TripDetails from './components/trip-details/TripDetails'
 import useScrollToTop from './hooks/useScrollToTop'
 import { AuthContextProvider } from './contexts/AuthContext'
 import Logout from './components/logout/Logout'
+import TripEdit from './components/trip-edit/TripEdit'
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
           <Route path='/trips/popular' element={<TripsPopular />} />
           <Route path='/trips/all' element={<TripsAll />} />
           <Route path='/trips/:tripId/details' element={<TripDetails />} />
-          <Route path='/trip/create' element={<TripCreate />} />
+          <Route path='/trips/:tripId/edit' element={<TripEdit />} />
           <Route path='/trip/create' element={<TripCreate />} />
         </Routes>
         </main>

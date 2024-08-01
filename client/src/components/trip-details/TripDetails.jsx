@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -92,12 +92,12 @@ export default function TripDetails() {
             </Typography>
             <div className="mt-4 flex flex-col items-center">
               {isOwner && (<div className="buttons flex flex-row justify-center">
-                <button
-                  type="submit"
-                  className="w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                <Link
+                  to={`/trips/${tripId}/edit`}
+                  className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
                 >
                   Edit
-                </button>
+                </Link>
                 <button
                   type="submit"
                   onClick={tripDeleteHandler}

@@ -58,7 +58,8 @@
     - [x] API function
     - [x] Hook
 - [ ] Latest trips
-- [ ] Edit Page - edit and delete functionality
+- [ ] Edit Trip
+- [x] Delete Trip
 
 ## 9. Refactoring
 - [x] Extract auth state from App component
