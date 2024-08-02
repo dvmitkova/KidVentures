@@ -15,6 +15,7 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 import Logout from "./components/logout/Logout";
 import TripEdit from "./components/trip-edit/TripEdit";
 import RouteGuard from "./components/common/RouteGuard";
+import ProfileEdit from "./components/profile-edit/ProfileEdit";
 
 function App() {
   useScrollToTop();
@@ -33,6 +34,7 @@ function App() {
             <Route path="/trips/:tripId/details" element={<TripDetails />} />
             <Route element={<RouteGuard />}>
             <Route path="/user/profile" element={<Profile />} />
+            <Route path="/user/profile-edit" element={<ProfileEdit />} />
               <Route path="/trips/create" element={<TripCreate />} />
               <Route path="/trips/:tripId/edit" element={<TripEdit />} />
               <Route path="/logout" element={<Logout />} />

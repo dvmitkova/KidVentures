@@ -1,7 +1,9 @@
 import { getAccessToken } from "../utils/authUtils";
 
 async function requester(method, url, data) {
-    const options = {};
+    const options = {
+        method,
+    };
 
     const accessToken = getAccessToken();
 
@@ -9,20 +11,18 @@ async function requester(method, url, data) {
         options.headers = {
             ...options.headers,
             'X-Authorization': accessToken,
-        }
+        };
     }
 
     if (method !== 'GET') {
-        options.method = method;
-    }
-
-    if (data) {
         options.headers = {
             ...options.headers,
             'Content-Type': 'application/json',
         };
 
-        options.body = JSON.stringify(data);
+        if (data) {
+            options.body = JSON.stringify(data);
+        }
     }
 
     const response = await fetch(url, options);
@@ -50,4 +50,4 @@ export default {
     post,
     put,
     del
-}
+};

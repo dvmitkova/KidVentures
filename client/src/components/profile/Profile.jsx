@@ -1,142 +1,66 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import UserCircleIcon from '@mui/icons-material/AccountCircle';
+import { getUserDetails } from '../../api/auth-api';
 
 export default function Profile() {
+  const { userId } = useParams();
   const [profileData, setProfileData] = useState({
-    username: '',
     about: '',
     firstName: '',
     lastName: '',
     email: '',
     country: '',
+    profilePicture: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData({ ...profileData, [name]: value });
-  };
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        // Fetch profile data based on userId
+        const data = await getUserDetails(userId); // Adjust if needed for fetching specific user
+        setProfileData(data);
+      } catch (error) {
+        console.error('Failed to fetch user details:', error);
+      }
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // handle the submit logic
-    console.log(profileData);
-  };
+    fetchProfileData();
+  }, [userId]);
 
   return (
-    <div className="flex flex-row justify-center items-start min-h-screen">
+    <div className="flex flex-col items-center min-h-screen">
       <Card sx={{ width: '100%', maxWidth: 800, margin: 4 }}>
         <CardContent>
-          <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', color: '#083344' }}>
-            Your Profile
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ marginBottom: 2, color: '#083344' }}>
-            This information will be displayed publicly. Please be mindful of what you share.
-          </Typography>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <TextField
-              label="Username"
-              name="username"
-              value={profileData.username}
-              onChange={handleChange}
-              fullWidth
-              variant="outlined"
-              sx={{ marginBottom: 2 }}
-            />
-            <TextField
-              label="About"
-              name="about"
-              value={profileData.about}
-              onChange={handleChange}
-              fullWidth
-              multiline
-              rows={3}
-              variant="outlined"
-              sx={{ marginBottom: 2 }}
-            />
-            <Typography variant="body2" color="text.secondary" sx={{ marginBottom: 2, color: '#083344' }}>
-              A few sentences about yourself.
+          <div className="flex flex-col items-center">
+            {profileData.profilePicture ? (
+              <img
+                src={profileData.profilePicture}
+                alt="Profile"
+                className="w-24 h-24 rounded-full border-4 border-gray-300 mb-4"
+              />
+            ) : (
+              <UserCircleIcon sx={{ fontSize: 100, color: '#a8a29e', marginBottom: 2 }} />
+            )}
+            <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', marginBottom: 2, color: '#083344' }}>
+              {profileData.about}
             </Typography>
-            <TextField
-              label="First Name"
-              name="firstName"
-              value={profileData.firstName}
-              onChange={handleChange}
-              fullWidth
-              variant="outlined"
-              sx={{ marginBottom: 2 }}
-            />
-            <TextField
-              label="Last Name"
-              name="lastName"
-              value={profileData.lastName}
-              onChange={handleChange}
-              fullWidth
-              variant="outlined"
-              sx={{ marginBottom: 2 }}
-            />
-            <TextField
-              label="Email Address"
-              name="email"
-              value={profileData.email}
-              onChange={handleChange}
-              fullWidth
-              variant="outlined"
-              sx={{ marginBottom: 2 }}
-            />
-            <TextField
-              label="Country"
-              name="country"
-              value={profileData.country}
-              onChange={handleChange}
-              fullWidth
-              select
-              SelectProps={{
-                native: true,
-              }}
-              variant="outlined"
-              sx={{ marginBottom: 2 }}
-            >
-              <option value="">Select your country</option>
-              <option value="United States">United States</option>
-              <option value="Canada">Canada</option>
-              <option value="Mexico">Mexico</option>
-            </TextField>
-            <div className="flex items-center space-x-2">
-              <UserCircleIcon sx={{ fontSize: 40, color: '#a8a29e' }} />
-              <Button variant="contained" component="label" sx={{ backgroundColor: '#083344', color: '#fff' }}>
-                Change Profile Picture
-                <input hidden accept="image/*" type="file" />
-              </Button>
-            </div>
-            <div className="mt-6 flex items-center justify-end gap-x-6">
-              <Button
-                type="button"
-                onClick={() => setProfileData({
-                  username: '',
-                  about: '',
-                  firstName: '',
-                  lastName: '',
-                  email: '',
-                  country: '',
-                })}
-                sx={{ color: '#083344' }}
-              >
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{ backgroundColor: '#083344', color: '#fff' }}
-              >
-                Save
-              </Button>
-            </div>
-          </form>
+            <Typography variant="body2" color="text.secondary" sx={{ marginBottom: 2, color: '#083344' }}>
+              <strong>First Name:</strong> {profileData.firstName}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ marginBottom: 2, color: '#083344' }}>
+              <strong>Last Name:</strong> {profileData.lastName}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ marginBottom: 2, color: '#083344' }}>
+              <strong>Email:</strong> {profileData.email}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ marginBottom: 2, color: '#083344' }}>
+              <strong>Country:</strong> {profileData.country}
+            </Typography>
+          </div>
         </CardContent>
       </Card>
     </div>
