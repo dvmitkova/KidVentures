@@ -17,80 +17,78 @@ const initialValues = {
 };
 
 export default function TripCreate() { 
-    const createTrip = useCreateTrip();
-    const navigate = useNavigate();
-    const [selectedImage, setSelectedImage] = useState(null);
+  const createTrip = useCreateTrip();
+  const navigate = useNavigate();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
-    const createHandler = async (values) => {
-      try {
-        const imageUrl = await handleImageUpload(selectedImage);
-        const tripData = { ...values, imageUrl };
+  const createHandler = async (values) => {
+    try {
+      const imageUrl = selectedImage ? URL.createObjectURL(selectedImage) : '';
+      const tripData = { ...values, imageUrl };
 
-        const { _id: tripId } = await createTrip(tripData);
-        navigate(`/trips/${tripId}/details`);
-      } catch (err) {
-        alert(err.message);
-      }
-    };
+      const { _id: tripId } = await createTrip(tripData);
+      navigate(`/trips/${tripId}/details`);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
 
-    const handleImageUpload = async (imageFile) => {
-      if (!imageFile) return '';
-      return URL.createObjectURL(imageFile);
-    };
+  const { values, changeHandler, submitHandler } = useForm(
+    initialValues,
+    createHandler
+  );
 
-    const { values, changeHandler, submitHandler } = useForm(
-      initialValues,
-      createHandler
-    );
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+      values.imageUrl = URL.createObjectURL(file);
+    }
+  };
 
-    const handleFileChange = (event) => {
-      const file = event.target.files[0];
-      setSelectedImage(file);
-      if (file) {
-        values.imageUrl = URL.createObjectURL(file);
-      }
-    };
-
-    return (
-      <div className="flex flex-row justify-center items-start min-h-screen">
-        <Card sx={{ width: "100%", maxWidth: 600, margin: 4 }}>
-          <CardContent>
-            <Typography
-              variant="h5"
-              component="div"
-              sx={{ fontWeight: "bold", color: "#083344", marginBottom: 1 }}
-            >
-              Create Your Journey
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ marginBottom: 2, color: "#083344" }}
-            >
-              Share your unforgettable adventure with the world
-            </Typography>
-            <form onSubmit={submitHandler} className="space-y-4">
-              <TextField
-                label="Trip Title"
-                name="title"
-                value={values.title}
-                onChange={changeHandler}
-                fullWidth
-                variant="outlined"
-                sx={{ marginBottom: 2 }}
-              />
-              <TextField
-                label="Description"
-                name="content"
-                value={values.content}
-                onChange={changeHandler}
-                fullWidth
-                multiline
-                rows={4}
-                variant="outlined"
-                sx={{ marginBottom: 2 }}
-              />
-              <div className="flex items-center space-x-2">
+  return (
+    <div className="flex flex-row justify-center items-start min-h-screen">
+      <Card sx={{ width: "100%", maxWidth: 600, margin: 4 }}>
+        <CardContent>
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ fontWeight: "bold", color: "#083344" }}
+          >
+            Create Your Journey
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ marginBottom: 2, color: "#083344" }}
+          >
+            Share your unforgettable adventure with the world
+          </Typography>
+          <form onSubmit={submitHandler} className="space-y-4">
+            <TextField
+              label="Trip Title"
+              name="title"
+              value={values.title}
+              onChange={changeHandler}
+              fullWidth
+              variant="outlined"
+              sx={{ marginBottom: 2 }}
+            />
+            <TextField
+              label="Description"
+              name="content"
+              value={values.content}
+              onChange={changeHandler}
+              fullWidth
+              multiline
+              rows={4}
+              variant="outlined"
+              sx={{ marginBottom: 2 }}
+            />
+            <div className="flex flex-row items-center justify-center space-x-10 space-y-4">
+              <div className="flex items-center"> 
                 <IconButton
                   color="primary"
                   aria-label="upload picture"
@@ -104,22 +102,26 @@ export default function TripCreate() {
                   />
                   <PhotoCamera />
                 </IconButton>
-                {values.imageUrl && (
-                  <Typography variant="body2" color="text.secondary">
-                    {values.imageUrl}
-                  </Typography>
-                )}
               </div>
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{ backgroundColor: "#083344", color: "#fff", marginTop: 2 }}
-              >
-                Submit Your Story
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    );
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Selected"
+                  className="rounded border border-gray-300"
+                  style={{ width: '100px', height: 'auto', objectFit: 'cover' }}
+                />
+              )}
+            </div>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ backgroundColor: "#083344", color: "#fff", marginTop: 2 }}
+            >
+              Submit Your Story
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
