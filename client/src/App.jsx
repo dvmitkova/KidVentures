@@ -28,11 +28,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/user/profile" element={<Profile />} />
             <Route path="/trips/latest" element={<TripsLatest />} />
             <Route path="/trips/all" element={<TripsAll />} />
             <Route path="/trips/:tripId/details" element={<TripDetails />} />
             <Route element={<RouteGuard />}>
+            <Route path="/user/profile" element={<Profile />} />
               <Route path="/trips/create" element={<TripCreate />} />
               <Route path="/trips/:tripId/edit" element={<TripEdit />} />
               <Route path="/logout" element={<Logout />} />
