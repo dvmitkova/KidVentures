@@ -35,10 +35,6 @@ export default function TripCreate() {
 
     const handleImageUpload = async (imageFile) => {
       if (!imageFile) return '';
-
-      // Implement image upload logic here
-      // For now, we'll return a placeholder URL
-      // In a real application, you would upload the image to a server or cloud storage
       return URL.createObjectURL(imageFile);
     };
 
@@ -51,7 +47,6 @@ export default function TripCreate() {
       const file = event.target.files[0];
       setSelectedImage(file);
       if (file) {
-        // Update the image URL field (used in case of immediate preview)
         values.imageUrl = URL.createObjectURL(file);
       }
     };
@@ -63,7 +58,7 @@ export default function TripCreate() {
             <Typography
               variant="h5"
               component="div"
-              sx={{ fontWeight: "bold", color: "#083344" }}
+              sx={{ fontWeight: "bold", color: "#083344", marginBottom: 1 }}
             >
               Create Your Journey
             </Typography>

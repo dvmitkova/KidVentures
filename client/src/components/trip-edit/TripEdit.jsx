@@ -1,15 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import {
   Button,
   Card,
   CardContent,
-  IconButton,
   TextField,
   Typography,
 } from "@mui/material";
 import { useForm } from "../../hooks/useForm";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTripsGetOne } from "../../hooks/useTrips";
 import tripsAPI from "../../api/tripsAPI";
 
@@ -40,20 +38,9 @@ export default function TripEdit() {
     }
   );
 
-  const [setSelectedImage] = useState(null);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedImage(file);
-    if (file) {
-      // Update the image URL field (used in case of immediate preview)
-      values.imageUrl = URL.createObjectURL(file);
-    }
-  };
-
   return (
     <div className="flex flex-row justify-center items-start min-h-screen">
-      <Card sx={{ width: "100%", maxWidth: 600, margin: 4 }}>
+      <Card sx={{ width: "100%", maxWidth: 600, margin: 2 }}>
         <CardContent>
           <Typography
             variant="h5"
@@ -62,7 +49,7 @@ export default function TripEdit() {
           >
             Edit Your Journey
           </Typography>
-          <form onSubmit={submitHandler} className="space-y-4">
+          <form onSubmit={submitHandler} className="space-y-4 mt-8">
             <TextField
               label="Trip Title"
               name="title"
@@ -83,26 +70,6 @@ export default function TripEdit() {
               variant="outlined"
               sx={{ marginBottom: 2 }}
             />
-            <div className="flex items-center space-x-2">
-              <IconButton
-                color="primary"
-                aria-label="upload picture"
-                component="label"
-              >
-                <input
-                  hidden
-                  accept="image/*"
-                  type="file"
-                  onChange={handleFileChange}
-                />
-                <PhotoCamera />
-              </IconButton>
-              {values.imageUrl && (
-                <Typography variant="body2" color="text.secondary">
-                  {values.imageUrl}
-                </Typography>
-              )}
-            </div>
             <Button
               type="submit"
               variant="contained"
