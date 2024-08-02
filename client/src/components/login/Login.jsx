@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useLogin } from "../../hooks/useAuth";
 import { useForm } from "../../hooks/useForm";
@@ -24,16 +24,16 @@ export default function Login() {
   return (
     <>
       <section className="bg-gradient-to-b from-amber-100 via-green-50 to-lime-100">
-        <div className="container h-full p-10">
+        <div className="container h-full p-4">
           <div className="flex h-full flex-wrap items-center justify-center text-cyan-950">
             <div className="w-full">
               <div className="block rounded-lg bg-white shadow-lg">
                 <div className="g-0 lg:flex lg:flex-wrap">
                   {/* Left column container*/}
                   <div className="px-4 md:px-0 lg:w-6/12">
-                    <div className="md:mx-6 md:p-12">
+                    <div className="md:mx-12 md:p-4">
                       {/*Logo*/}
-                      <div className="flex justify-center items-center flex-col pt-6">
+                      <div className="flex justify-center items-center flex-col pt-2">
                         <img
                           className="w-auto h-20"
                           src="/images/logo-icon.png"
@@ -93,15 +93,16 @@ export default function Login() {
 
                         {/*Register button*/}
                         <div className="flex items-center justify-between pb-6">
-                          <p className="mb-0 me-2">Don't have an account?</p>
-                          <button
+                          <p className="mb-0 me-2">Don&apos;t have an account?</p>
+                          <Link
+                            to="/register"
                             type="button"
                             className="inline-block rounded border-2 border-cyan-700 px-6 pb-[6px] pt-2 text-xs font-semibold uppercase leading-normal text-cyan-950 transition duration-150 ease-in-out hover:border-cyan-900 hover:bg-cyan-900 hover:text-white focus:border-cyan-800 focus:bg-cyan-700 focus:text-white focus:outline-none active:border-cyan-900 active:bg-cyan-800"
                             data-twe-ripple-init=""
                             data-twe-ripple-color="light"
                           >
                             Register
-                          </button>
+                          </Link>
                         </div>
                       </form>
                     </div>
@@ -116,14 +117,12 @@ export default function Login() {
                   >
                     <div className="px-4 py-6 text-white md:mx-6 md:p-12">
                       <h4 className="mb-6 text-xl text-cyan-950 font-bold">
-                        We are more than just a company
+                        Welcome Back!
                       </h4>
                       <p className="text-sm text-cyan-950">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat.
+                        We are glad to see you again. Log in to access your
+                        account and continue where you left off. If you need any
+                        help, feel free to contact our support team.
                       </p>
                     </div>
                   </div>
