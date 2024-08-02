@@ -9,7 +9,11 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 flex justify-between items-center">
         <h1 className="text-2xl font-bold">
           <Link className="hover:text-cyan-600 transition" to="/">
-            KidVentures
+          <img
+              src="/images/logo.png"
+              alt="logo"
+              className="w-full h-10"
+          />
           </Link>
         </h1>
         <nav className="flex space-x-4 font-bold">
