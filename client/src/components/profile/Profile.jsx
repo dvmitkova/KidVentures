@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -33,7 +33,7 @@ export default function Profile() {
 
   return (
     <div className="flex flex-col items-center min-h-screen">
-      <Card sx={{ width: '100%', maxWidth: 800, margin: 4 }}>
+      <Card sx={{ width: '100%', maxWidth: 600, margin: 2 }}>
         <CardContent>
           <div className="flex flex-col items-center">
             {profileData.profilePicture ? (
@@ -61,6 +61,14 @@ export default function Profile() {
               <strong>Country:</strong> {profileData.country}
             </Typography>
           </div>
+          <div className="buttons flex flex-row justify-center">
+                <Link
+                  to={`/user/profile-edit`}
+                  className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                >
+                  Edit
+            </Link>
+            </div>
         </CardContent>
       </Card>
     </div>
