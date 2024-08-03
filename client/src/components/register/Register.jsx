@@ -12,11 +12,12 @@ const initialValues = {
   lastName: "", 
   country: "",
   about: "", // Added About Me field
-  profilePicture: ""
+  profilePicture: "" // Added profile picture field
 };
 
 export default function Register() {
   const [error, setError] = useState("");
+  const [imagePreview, setImagePreview] = useState(null); // New state for image preview
   const register = useRegister();
   const navigate = useNavigate();
 
@@ -26,6 +27,7 @@ export default function Register() {
     }
 
     try {
+      // Here you would typically send the `values` to the server
       await register(values);
       navigate("/");
     } catch (err) {
@@ -43,6 +45,7 @@ export default function Register() {
     if (file) {
       const fileUrl = URL.createObjectURL(file);
       changeHandler({ target: { name: 'profilePicture', value: fileUrl } });
+      setImagePreview(fileUrl); // Set the preview URL
     }
   };
 
@@ -84,6 +87,7 @@ export default function Register() {
                       </h4>
                     </div>
                     <form onSubmit={submitHandler}>
+                      {/* Other form fields */}
                       <div className="relative mb-4">
                         <input
                           type="text"
@@ -179,6 +183,15 @@ export default function Register() {
                           Upload Profile Picture
                         </label>
                       </div>
+                      {imagePreview && (
+                        <div className="mb-4 flex justify-center">
+                          <img
+                            src={imagePreview}
+                            alt="Profile Preview"
+                            className="w-24 h-24 rounded-full border-4 border-gray-300"
+                          />
+                        </div>
+                      )}
                       <div className="mb-12 pb-1 pt-1 text-center">
                         <button
                           className="mb-2 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out hover:bg-cyan-700 focus:bg-cyan-800 focus:outline-none active:bg-cyan-900"
