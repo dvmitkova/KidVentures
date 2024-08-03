@@ -25,19 +25,25 @@ async function requester(method, url, data) {
         }
     }
 
-    const response = await fetch(url, options);
+    try {
+        const response = await fetch(url, options);
+        
+        if (response.status === 204) {
+            return; // No content response
+        }
 
-    if (response.status === 204) {
-        return;
+        const result = await response.json();
+
+        if (!response.ok) {
+            console.error('Request failed:', result); // Log error details
+            throw new Error(result.message || 'Something went wrong');
+        }
+
+        return result;
+    } catch (error) {
+        console.error('Error in request:', error); // Log errors during fetch
+        throw error;
     }
-    
-    const result = await response.json();
-
-    if (!response.ok) {
-        throw result;
-    }
-
-    return result;
 }
 
 export const get = requester.bind(null, 'GET');

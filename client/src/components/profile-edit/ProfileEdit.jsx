@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import UserCircleIcon from "@mui/icons-material/AccountCircle";
 import { useForm } from "../../hooks/useForm";
-import { getUserDetails, updateProfile } from "../../api/auth-api"; // Adjust import if needed
+import { getUserDetails, updateProfile } from "../../api/auth-api";
 import { countries } from "../../utils/countries";
 
 const initialValues = {
@@ -40,6 +40,7 @@ export default function ProfileEdit() {
   const { changeHandler, submitHandler, values, setValues } = useForm(
     initialFormValues,
     async (values) => {
+      console.log("Submitting values:", values); // Debugging statement
       const isConfirmed = confirm("Are you sure you want to update your profile?");
       if (isConfirmed) {
         try {
