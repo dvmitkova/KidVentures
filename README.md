@@ -67,6 +67,17 @@
 - [x] Comments - refactored
 - [x] Add route guards
 
+## 10. Final touches
+- [ ] Error handling
+- [ ] Data validation 
+- [ ] Documentation
+- [ ] CSS files?
+- [ ] Route guards - logged in users must not see login and register pages!
+- [ ] Unit tests
+- [ ] Connect to an external API? - login with facebook or google
+- [ ] Deploy?
+
+
 ## Notes
 1. Latest Trips
     1. URL `http://localhost:3030/data/trips?sortBy=_createdOn%20desc&pageSize=3`
