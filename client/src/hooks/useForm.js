@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export function useForm(initialValues, submitCallback, validate) {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({}); // Add touched state
 
     // Reinitialize form
     useEffect(() => {
@@ -17,9 +18,14 @@ export function useForm(initialValues, submitCallback, validate) {
     }, [values, validate]);
 
     const changeHandler = (e) => {
+        const { name, value } = e.target;
         setValues(state => ({
             ...state,
-            [e.target.name]: e.target.value
+            [name]: value
+        }));
+        setTouched(state => ({
+            ...state,
+            [name]: true
         }));
     };
 
@@ -39,6 +45,7 @@ export function useForm(initialValues, submitCallback, validate) {
         console.log("Submitting form", values); // Log form submission values
         await submitCallback(values);
         setValues(initialValues);
+        setTouched({}); // Reset touched state after successful submission
     };
 
     return {
@@ -46,6 +53,7 @@ export function useForm(initialValues, submitCallback, validate) {
         errors,
         changeHandler,
         submitHandler,
-        setValues
+        setValues,
+        touched // Return touched state
     };
 }

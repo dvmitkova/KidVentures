@@ -55,7 +55,7 @@ export default function Register() {
     }
   };
 
-  const { values, errors, changeHandler, submitHandler } = useForm(
+  const { values, errors, changeHandler, submitHandler, touched } = useForm(
     initialValues,
     registerHandler,
     validate
@@ -65,7 +65,7 @@ export default function Register() {
     const file = e.target.files[0];
     if (file) {
       const fileUrl = URL.createObjectURL(file);
-      changeHandler({ target: { name: 'profilePicture', value: fileUrl } });
+      changeHandler({ target: { name: 'profilePicture', value: file } }); // Set the file object
       setImagePreview(fileUrl); // Set the preview URL
     }
   };
@@ -108,7 +108,6 @@ export default function Register() {
                       </h4>
                     </div>
                     <form onSubmit={submitHandler}>
-                      {/* Other form fields */}
                       <div className="relative mb-4">
                         <input
                           type="text"
@@ -119,7 +118,9 @@ export default function Register() {
                           value={values.email}
                           onChange={changeHandler}
                         />
-                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                        {touched.email && errors.email && (
+                          <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                        )}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -127,11 +128,13 @@ export default function Register() {
                           className="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:text-cyan-950 text-cyan-950 placeholder-cyan-950 shadow-sm focus:shadow-md"
                           id="password"
                           placeholder="Password"
-                          value={values.password}
                           name="password"
+                          value={values.password}
                           onChange={changeHandler}
                         />
-                        {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
+                        {touched.password && errors.password && (
+                          <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+                        )}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -139,11 +142,13 @@ export default function Register() {
                           className="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:text-cyan-950 text-cyan-950 placeholder-cyan-950 shadow-sm focus:shadow-md"
                           id="rePassword"
                           placeholder="Repeat your password"
-                          value={values.rePassword}
                           name="rePassword"
+                          value={values.rePassword}
                           onChange={changeHandler}
                         />
-                        {errors.rePassword && <p className="text-red-500 text-xs mt-1">{errors.rePassword}</p>}
+                        {touched.rePassword && errors.rePassword && (
+                          <p className="text-red-500 text-xs mt-1">{errors.rePassword}</p>
+                        )}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -155,7 +160,9 @@ export default function Register() {
                           value={values.firstName}
                           onChange={changeHandler}
                         />
-                        {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
+                        {touched.firstName && errors.firstName && (
+                          <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
+                        )}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -167,7 +174,9 @@ export default function Register() {
                           value={values.lastName}
                           onChange={changeHandler}
                         />
-                        {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
+                        {touched.lastName && errors.lastName && (
+                          <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
+                        )}
                       </div>
                       <div className="relative mb-4">
                         <select
@@ -184,7 +193,9 @@ export default function Register() {
                             </option>
                           ))}
                         </select>
-                        {errors.country && <p className="text-red-500 text-xs mt-1">{errors.country}</p>}
+                        {touched.country && errors.country && (
+                          <p className="text-red-500 text-xs mt-1">{errors.country}</p>
+                        )}
                       </div>
                       <div className="relative mb-4">
                         <textarea
@@ -244,5 +255,3 @@ export default function Register() {
     </section>
   );
 }
-
-
