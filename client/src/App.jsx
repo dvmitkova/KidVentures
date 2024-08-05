@@ -17,12 +17,14 @@ import TripEdit from "./components/trip-edit/TripEdit";
 import RouteGuard from "./components/common/RouteGuard";
 import ProfileEdit from "./components/profile-edit/ProfileEdit";
 import GuestGuard from "./components/common/GuestGuard";
+import { LoadingProvider } from "./hooks/useLoading";
 
 function App() {
   useScrollToTop();
 
   return (
     <AuthContextProvider>
+      <LoadingProvider>
       <div id="box">
         <Navbar />
         <main id="main-content">
@@ -49,7 +51,8 @@ function App() {
         <footer>
           <Footer />
         </footer>
-      </div>
+        </div>
+        </LoadingProvider>
     </AuthContextProvider>
   );
 }
