@@ -67,7 +67,12 @@
 - [x] Comments - refactored
 - [x] Add route guards
 
-## 10. Final touches
+## 10. Unit testing
+- [x] Installation - npm i -D vitest + config
+- [x] DOM creation - npm i -D jsdom + config
+
+## 11. Final touches
+- [ ] Spinner for waiting to fetch data
 - [ ] Error handling
 - [x] Data validation 
 - [ ] Documentation

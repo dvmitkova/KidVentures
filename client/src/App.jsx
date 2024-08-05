@@ -27,7 +27,7 @@ function App() {
       <LoadingProvider>
       <div id="box">
         <Navbar />
-        <main id="main-content">
+        <main id="main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/trips/latest" element={<TripsLatest />} />
