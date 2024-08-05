@@ -13,7 +13,7 @@ const initialValues = {
   lastName: "", 
   country: "",
   about: "", // Added About Me field
-  profilePicture: "" // Added profile picture field
+  profilePicture: null, // Added profile picture field
 };
 
 export default function Register() {
@@ -30,6 +30,19 @@ export default function Register() {
     }
 
     try {
+      let profilePictureUrl = values.profilePicture;
+
+      if (profilePictureUrl instanceof File) { // Handle File object
+        const formData = new FormData();
+        formData.append('file', profilePictureUrl);
+
+        const uploadResponse = await fetch('http://localhost:3030/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        const uploadData = await uploadResponse.json();
+        profilePictureUrl = uploadData.url;
+      }
       // Send registration data to server
       await register(values);
 
