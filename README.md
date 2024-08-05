@@ -72,7 +72,7 @@
 - [x] Data validation 
 - [ ] Documentation
 - [ ] CSS files?
-- [ ] Route guards - logged in users must not see login and register pages!
+- [x] Route guards - logged in users must not see login and register pages!
 - [ ] Unit tests
 - [ ] Connect to an external API? - login with facebook or google
 - [ ] Deploy?

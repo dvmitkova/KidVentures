@@ -16,6 +16,7 @@ import Logout from "./components/logout/Logout";
 import TripEdit from "./components/trip-edit/TripEdit";
 import RouteGuard from "./components/common/RouteGuard";
 import ProfileEdit from "./components/profile-edit/ProfileEdit";
+import GuestGuard from "./components/common/GuestGuard";
 
 function App() {
   useScrollToTop();
@@ -27,11 +28,15 @@ function App() {
         <main id="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
             <Route path="/trips/latest" element={<TripsLatest />} />
             <Route path="/trips/all" element={<TripsAll />} />
             <Route path="/trips/:tripId/details" element={<TripDetails />} />
+
+            <Route element={<GuestGuard />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            </Route>
+            
             <Route element={<RouteGuard />}>
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/profile-edit" element={<ProfileEdit />} />
