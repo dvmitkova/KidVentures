@@ -69,7 +69,7 @@
 
 ## 10. Final touches
 - [ ] Error handling
-- [ ] Data validation 
+- [x] Data validation 
 - [ ] Documentation
 - [ ] CSS files?
 - [ ] Route guards - logged in users must not see login and register pages!

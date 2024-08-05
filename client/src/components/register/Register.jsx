@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useRegister } from "../../hooks/useAuth";
+import { useRegister, useLogin } from "../../hooks/useAuth";
 import { useForm } from "../../hooks/useForm";
 import { useState } from "react";
 import { countries } from "../../utils/countries";
+import { validate } from "../../utils/validate";
 
 const initialValues = { 
   email: "", 
@@ -19,25 +20,32 @@ export default function Register() {
   const [error, setError] = useState("");
   const [imagePreview, setImagePreview] = useState(null); // New state for image preview
   const register = useRegister();
+  const login = useLogin();
   const navigate = useNavigate();
 
   const registerHandler = async (values) => {
+    console.log("Register handler called", values); // Log handler call
     if (values.password !== values.rePassword) {
       return setError("Password mismatch!");
     }
 
     try {
-      // Here you would typically send the `values` to the server
+      // Send registration data to server
       await register(values);
-      navigate("/");
+
+      // Automatically login the user after successful registration
+      await login(values.email, values.password);
+
+      navigate("/"); // Navigate to home page or another page after login
     } catch (err) {
       setError(err.message);
     }
   };
 
-  const { values, changeHandler, submitHandler } = useForm(
+  const { values, errors, changeHandler, submitHandler } = useForm(
     initialValues,
-    registerHandler
+    registerHandler,
+    validate
   );
 
   const handleFileChange = (e) => {
@@ -57,13 +65,13 @@ export default function Register() {
             <div className="block rounded-lg bg-white shadow-lg">
               <div className="g-0 lg:flex lg:flex-wrap">
                 <div
-                  className="flex items-center lg:w-6/12 lg:rounded-l-lg lg:rounded-r-none"
+                  className="flex items-start lg:w-6/12 lg:rounded-l-lg lg:rounded-r-none"
                   style={{
                     background:
                       "linear-gradient(to right, #fef3c7, #ecfccb, #d1fae5, #cffafe)",
                   }}
                 >
-                  <div className="px-4 py-6 text-white md:mx-6 md:p-12">
+                  <div className="px-4 py-6 mt-20 text-white md:mx-6 md:p-12">
                     <h4 className="mb-6 text-xl text-cyan-950 font-bold">
                       Welcome Aboard!
                     </h4>
@@ -98,6 +106,7 @@ export default function Register() {
                           value={values.email}
                           onChange={changeHandler}
                         />
+                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -109,6 +118,7 @@ export default function Register() {
                           name="password"
                           onChange={changeHandler}
                         />
+                        {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -120,6 +130,7 @@ export default function Register() {
                           name="rePassword"
                           onChange={changeHandler}
                         />
+                        {errors.rePassword && <p className="text-red-500 text-xs mt-1">{errors.rePassword}</p>}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -131,6 +142,7 @@ export default function Register() {
                           value={values.firstName}
                           onChange={changeHandler}
                         />
+                        {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                       </div>
                       <div className="relative mb-4">
                         <input
@@ -142,6 +154,7 @@ export default function Register() {
                           value={values.lastName}
                           onChange={changeHandler}
                         />
+                        {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
                       </div>
                       <div className="relative mb-4">
                         <select
@@ -158,6 +171,7 @@ export default function Register() {
                             </option>
                           ))}
                         </select>
+                        {errors.country && <p className="text-red-500 text-xs mt-1">{errors.country}</p>}
                       </div>
                       <div className="relative mb-4">
                         <textarea
@@ -179,45 +193,34 @@ export default function Register() {
                           onChange={handleFileChange}
                           className="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:text-cyan-950 text-cyan-950 placeholder-cyan-950 shadow-sm focus:shadow-md"
                         />
-                        <label htmlFor="profilePicture" className="absolute top-2 right-2 text-cyan-950">
-                          Upload Profile Picture
-                        </label>
+                        <label htmlFor="profilePicture">Profile Picture</label>
+                        {imagePreview && (
+                          <div className="mt-2">
+                            <img src={imagePreview} alt="Profile Preview" className="h-24 w-24 rounded-full object-cover" />
+                          </div>
+                        )}
                       </div>
-                      {imagePreview && (
-                        <div className="mb-4 flex justify-center">
-                          <img
-                            src={imagePreview}
-                            alt="Profile Preview"
-                            className="w-24 h-24 rounded-full border-4 border-gray-300"
-                          />
-                        </div>
-                      )}
-                      <div className="mb-12 pb-1 pt-1 text-center">
+                      <div className="relative mb-4">
+                        {error && <p className="text-red-500 text-xs">{error}</p>}
+                      </div>
+                      <div className="flex justify-center pt-1 mb-12 pb-1">
                         <button
-                          className="mb-2 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out hover:bg-cyan-700 focus:bg-cyan-800 focus:outline-none active:bg-cyan-900"
+                          className="w-full p-2 bg-cyan-100 text-cyan-950 rounded hover:bg-orange-100 hover:shadow"
                           type="submit"
-                          style={{
-                            background:
-                              "linear-gradient(to right, #083344, #164e63, #155e75, #0e7490)",
-                          }}
                         >
                           Register
                         </button>
                       </div>
-                      <div className="flex items-center justify-between pb-6">
-                        <p className="mb-0 me-2">Already have an account?</p>
+                      <div className="flex items-center justify-center pb-6">
+                        <p className="mb-0 mr-2 text-cyan-950">Already have an account?</p>
                         <Link
                           to="/login"
                           type="button"
-                          className="inline-block rounded border-2 border-cyan-700 px-6 pb-[6px] pt-2 text-xs font-semibold uppercase leading-normal text-cyan-950 transition duration-150 ease-in-out hover:border-cyan-900 hover:bg-cyan-900 hover:text-white focus:border-cyan-800 focus:bg-cyan-800 focus:text-white active:border-cyan-900 active:bg-cyan-900"
-                        >
+                          className="inline-block rounded border-2 border-cyan-700 px-6 pb-[6px] pt-2 text-xs font-semibold uppercase leading-normal text-cyan-950 transition duration-150 ease-in-out hover:border-cyan-900 hover:bg-cyan-900 hover:text-white focus:border-cyan-800 focus:bg-cyan-700 focus:text-white focus:outline-none active:border-cyan-900 active:bg-cyan-800">
                           Login
                         </Link>
                       </div>
                     </form>
-                    {error && (
-                      <div className="text-red-500 text-center mt-4">{error}</div>
-                    )}
                   </div>
                 </div>
               </div>
@@ -228,3 +231,5 @@ export default function Register() {
     </section>
   );
 }
+
+

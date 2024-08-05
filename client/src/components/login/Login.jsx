@@ -92,8 +92,6 @@ export default function Login() {
                             to="/register"
                             type="button"
                             className="inline-block rounded border-2 border-cyan-700 px-6 pb-[6px] pt-2 text-xs font-semibold uppercase leading-normal text-cyan-950 transition duration-150 ease-in-out hover:border-cyan-900 hover:bg-cyan-900 hover:text-white focus:border-cyan-800 focus:bg-cyan-700 focus:text-white focus:outline-none active:border-cyan-900 active:bg-cyan-800"
-                            data-twe-ripple-init=""
-                            data-twe-ripple-color="light"
                           >
                             Register
                           </Link>
@@ -103,13 +101,13 @@ export default function Login() {
                   </div>
                   {/* Right column container with background and description*/}
                   <div
-                    className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-e-lg lg:rounded-bl-none"
+                    className="flex items-start rounded-b-lg lg:w-6/12 lg:rounded-e-lg lg:rounded-bl-none"
                     style={{
                       background:
                         "linear-gradient(to right, #fef3c7, #ecfccb, #d1fae5, #cffafe)",
                     }}
                   >
-                    <div className="px-4 py-6 text-white md:mx-6 md:p-12">
+                    <div className="px-4 mt-20 py-6 text-white md:mx-6 md:p-12">
                       <h4 className="mb-6 text-xl text-cyan-950 font-bold">
                         Welcome Back!
                       </h4>
