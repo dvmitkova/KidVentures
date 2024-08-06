@@ -10,6 +10,7 @@ import { useForm } from "../../hooks/useForm";
 import { useMemo } from "react";
 import { useTripsGetOne } from "../../hooks/useTrips";
 import tripsAPI from "../../api/tripsAPI";
+import { useLoading } from "../../hooks/useLoading";
 
 const initialValues = {
   title: "",
@@ -18,6 +19,7 @@ const initialValues = {
 };
 
 export default function TripEdit() {
+  const { isLoading, setIsLoading } = useLoading();
   const navigate = useNavigate();
   const { tripId } = useParams();
   const [trip] = useTripsGetOne(tripId);
@@ -28,12 +30,19 @@ export default function TripEdit() {
   const { changeHandler, submitHandler, values } = useForm(
     initialFormValues,
     async (values) => {
+
       const isConfirmed = confirm("Are you sure you want to update your trip?");
 
       if (isConfirmed) {
-        await tripsAPI.update(tripId, values);
-
-        navigate(`/trips/${tripId}/details`);
+        setIsLoading(true);
+        try {
+          await tripsAPI.update(tripId, values);
+          navigate(`/trips/${tripId}/details`);
+        } catch (err) {
+          console.error("Failed to update trip:", err);
+        } finally {
+          setIsLoading(false);
+        }
       }
     }
   );

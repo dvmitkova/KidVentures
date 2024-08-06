@@ -1,9 +1,21 @@
 import TripsListItem from "./trips-list-item/TripsListItem";
 import { Box } from "@mui/material";
 import { useTripsGetAll } from "../../hooks/useTrips";
+import { useLoading } from "../../hooks/useLoading";
+import { useEffect } from "react";
 
 export default function TripsAll() {
   const [trips] = useTripsGetAll();
+  const { isLoading, setIsLoading } = useLoading();
+
+  // Ensuring isLoading is set to true while fetching trips
+  useEffect(() => {
+    if (trips.length === 0) {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, [trips, setIsLoading]);
 
   return (
     <section>
@@ -13,24 +25,24 @@ export default function TripsAll() {
         </h1>
       </div>
 
-      <Box
-        id="catalog-page"
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "16px",
-          justifyContent: "center",
-          padding: "20px",
-        }}
-      >
-        {trips.length > 0 ? (
-          trips.map((trip) => <TripsListItem key={trip._id} {...trip} />)
-        ) : (
-          <h3 style={{ textAlign: "center", width: "100%", marginTop: "20px" }}>
-            No trips yet
-          </h3>
-        )}
-      </Box>
+        <Box
+          id="catalog-page"
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "16px",
+            justifyContent: "center",
+            padding: "20px",
+          }}
+        >
+          {trips.length > 0 ? (
+            trips.map((trip) => <TripsListItem key={trip._id} {...trip} />)
+          ) : (
+            <h3 style={{ textAlign: "center", width: "100%", marginTop: "20px" }}>
+              No trips yet
+            </h3>
+          )}
+        </Box>
     </section>
   );
 }

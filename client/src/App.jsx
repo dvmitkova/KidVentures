@@ -24,10 +24,10 @@ function App() {
 
   return (
     <AuthContextProvider>
-      <LoadingProvider>
-        <div id="box">
-          <Navbar />
-          <main id="main">
+      <div id="box">
+        <Navbar />
+        <main id="main">
+          <LoadingProvider>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/trips/latest" element={<TripsLatest />} />
@@ -47,12 +47,12 @@ function App() {
                 <Route path="/logout" element={<Logout />} />
               </Route>
             </Routes>
-          </main>
-          <footer>
-            <Footer />
-          </footer>
-        </div>
-      </LoadingProvider>
+          </LoadingProvider>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </AuthContextProvider>
   );
 }

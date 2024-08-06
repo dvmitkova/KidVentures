@@ -75,7 +75,7 @@
 
 ## 11. Final touches
 - [x] Remove Add to favorites for guests
-- [ ] Spinner for waiting to fetch data
+- [ ] Spinner for waiting to fetch data - continue with tripDetails!!!
 - [ ] Error handling
 - [x] Data validation 
 - [ ] Documentation

@@ -8,63 +8,96 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
 import { useTripsGetOne } from "../../hooks/useTrips";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
-import {
-  useGetAllComments,
-  useCreateComment,
-} from "../../hooks/useCreateComment";
+import { useGetAllComments, useCreateComment } from "../../hooks/useCreateComment";
 import { useAuthContext } from "../../contexts/AuthContext";
 import tripsAPI from "../../api/tripsAPI";
+import { useLoading } from "../../hooks/useLoading";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const initialValues = {
   comment: "",
 };
 
 export default function TripDetails() {
+  const { isLoading, setIsLoading } = useLoading();
   const navigate = useNavigate();
-  const [favorite, setFavorite] = useState(false);
   const { tripId } = useParams();
+  const [favorite, setFavorite] = useState(false);
+  const [trip, setTrip] = useState(null); // Manage trip state locally
   const [comments, setComments] = useGetAllComments(tripId);
   const createComment = useCreateComment();
-  const [trip] = useTripsGetOne(tripId);
   const { isAuthenticated } = useAuthContext();
   const { userId } = useAuthContext();
-  const {
-    changeHandler,
-    submitHandler,
-    values
-  } = useForm(initialValues, async ({ comment }) => {
+  
+  // Fetch trip details and set local state
+  useEffect(() => {
+    const fetchTrip = async () => {
+      setIsLoading(true);
+      try {
+        const result = await tripsAPI.getOne(tripId);
+        setTrip(result);
+      } catch (error) {
+        console.error("Failed to fetch trip:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchTrip();
+  }, [tripId, setIsLoading]);
+
+  const { changeHandler, submitHandler, values } = useForm(
+    initialValues,
+    async ({ comment }) => {
+      setIsLoading(true);
       try {
         const newComment = await createComment(tripId, comment);
-
-        setComments(oldComments => [...oldComments, newComment]);
+        setComments((oldComments) => [...oldComments, newComment]);
       } catch (err) {
         alert(err.message);
+      } finally {
+        setIsLoading(false);
       }
     }
-    );
-  
+  );
+
   const tripDeleteHandler = async () => {
     const isConfirmed = confirm(`Are you sure you want to delete ${trip.title}?`);
 
     if (!isConfirmed) {
-      return
+      return;
     }
 
+    setIsLoading(true);
     try {
       await tripsAPI.remove(tripId);
-      navigate('/');
+      navigate("/");
     } catch (err) {
-      console.error(err.message)
+      console.error("Failed to delete trip:", err.message);
+    } finally {
+      setIsLoading(false);
     }
-  }
-  
-  const isOwner = userId === trip._ownerId;
+  };
+
+  const isOwner = userId === trip?._ownerId;
 
   const handleFavoriteToggle = () => {
     setFavorite(!favorite);
   };
+
+  // Show spinner while loading trip data or during other operations
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">
+        <BeatLoader color="#164e63" />
+      </div>
+    );
+  }
+
+  if (!trip) {
+    return <div className="text-center mt-4">Loading...</div>;
+  }
 
   return (
     <div className="flex flex-row justify-center items-start min-h-screen">
@@ -97,45 +130,50 @@ export default function TripDetails() {
               {trip.content}
             </Typography>
             <div className="mt-4 flex flex-col items-center">
-              {isOwner && (<div className="buttons flex flex-row justify-center">
-                <Link
-                  to={`/trips/${tripId}/edit`}
-                  className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
-                >
-                  Edit
-                </Link>
-                <button
-                  type="submit"
-                  onClick={tripDeleteHandler}
-                  className="w-24 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
-                >
-                  Delete
-                </button>
-              </div>
+              {isOwner && (
+                <div className="buttons flex flex-row justify-center">
+                  <Link
+                    to={`/trips/${tripId}/edit`}
+                    className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    type="submit"
+                    onClick={tripDeleteHandler}
+                    className="w-24 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                  >
+                    Delete
+                  </button>
+                </div>
               )}
-              {isAuthenticated && !isOwner && (<div className="favorite flex flex-col items-center space-y-2">
-              <IconButton
-                onClick={handleFavoriteToggle}
-                aria-label="add to favorites"
-              >
-                {favorite ? (
-                  <FavoriteIcon sx={{ fontSize: 40, color: "#fed7aa" }} />
-                ) : (
-                  <FavoriteBorderIcon sx={{ fontSize: 40, color: "#a8a29e" }} />
-                )}
-              </IconButton>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  color: favorite ? "#083344" : "#a8a29e",
-                }}
-              >
-                {favorite ? "Added to favorites" : "Not a favorite"}
-                </Typography>
-                </div>)}
+              {isAuthenticated && !isOwner && (
+                <div className="favorite flex flex-col items-center space-y-2">
+                  <IconButton
+                    onClick={handleFavoriteToggle}
+                    aria-label="add to favorites"
+                  >
+                    {favorite ? (
+                      <FavoriteIcon sx={{ fontSize: 40, color: "#fed7aa" }} />
+                    ) : (
+                      <FavoriteBorderIcon
+                        sx={{ fontSize: 40, color: "#a8a29e" }}
+                      />
+                    )}
+                  </IconButton>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      color: favorite ? "#083344" : "#a8a29e",
+                    }}
+                  >
+                    {favorite ? "Added to favorites" : "Not a favorite"}
+                  </Typography>
+                </div>
+              )}
             </div>
           </CardContent>
         </CardActionArea>
@@ -184,10 +222,7 @@ export default function TripDetails() {
             </div>
             <div className="mt-4 space-y-4">
               {comments.map((comment) => (
-                <div
-                  key={comment._id}
-                  className="p-4 bg-white shadow rounded-md"
-                >
+                <div key={comment._id} className="p-4 bg-white shadow rounded-md">
                   <Typography
                     variant="body2"
                     color="#083344"
