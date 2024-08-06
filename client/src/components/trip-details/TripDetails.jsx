@@ -113,7 +113,7 @@ export default function TripDetails() {
                 </button>
               </div>
               )}
-              {!isOwner && (<div className="favorite flex flex-col items-center space-y-2">
+              {isAuthenticated && !isOwner && (<div className="favorite flex flex-col items-center space-y-2">
               <IconButton
                 onClick={handleFavoriteToggle}
                 aria-label="add to favorites"

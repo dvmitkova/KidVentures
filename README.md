@@ -71,7 +71,10 @@
 - [x] Installation - npm i -D vitest + config
 - [x] DOM creation - npm i -D jsdom + config
 
+## !!!!!!!!!!!!!!!! Fix Profile Edit !!!!!!!!!!!!!!!!!!
+
 ## 11. Final touches
+- [ ] Remove Add to favorites for guests
 - [ ] Spinner for waiting to fetch data
 - [ ] Error handling
 - [x] Data validation 
