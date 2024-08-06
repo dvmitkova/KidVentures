@@ -7,7 +7,6 @@ import { CardActionArea } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
-import { useTripsGetOne } from "../../hooks/useTrips";
 import { useState, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import { useGetAllComments, useCreateComment } from "../../hooks/useCreateComment";

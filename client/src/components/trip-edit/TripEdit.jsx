@@ -19,7 +19,7 @@ const initialValues = {
 };
 
 export default function TripEdit() {
-  const { isLoading, setIsLoading } = useLoading();
+  const { setIsLoading } = useLoading();
   const navigate = useNavigate();
   const { tripId } = useParams();
   const [trip] = useTripsGetOne(tripId);

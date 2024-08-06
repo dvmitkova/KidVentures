@@ -5,7 +5,7 @@ import tripsAPI from "../../api/tripsAPI";
 import { useLoading } from "../../hooks/useLoading";
 export default function TripsLatest() {
   const [latestTrips, setLatestTrips] = useState([]);
-  const { isLoading, setIsLoading } = useLoading();
+  const { setIsLoading } = useLoading();
 
   useEffect(() => {
     const fetchLatestTrips = async () => {

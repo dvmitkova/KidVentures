@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 export default function TripsAll() {
   const [trips] = useTripsGetAll();
-  const { isLoading, setIsLoading } = useLoading();
+  const { setIsLoading } = useLoading();
 
   // Ensuring isLoading is set to true while fetching trips
   useEffect(() => {
