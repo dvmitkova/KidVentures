@@ -25,34 +25,34 @@ function App() {
   return (
     <AuthContextProvider>
       <LoadingProvider>
-      <div id="box">
-        <Navbar />
-        <main id="main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/trips/latest" element={<TripsLatest />} />
-            <Route path="/trips/all" element={<TripsAll />} />
-            <Route path="/trips/:tripId/details" element={<TripDetails />} />
+        <div id="box">
+          <Navbar />
+          <main id="main">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/trips/latest" element={<TripsLatest />} />
+              <Route path="/trips/all" element={<TripsAll />} />
+              <Route path="/trips/:tripId/details" element={<TripDetails />} />
 
-            <Route element={<GuestGuard />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            </Route>
-            
-            <Route element={<RouteGuard />}>
-            <Route path="/user/profile" element={<Profile />} />
-            <Route path="/user/profile-edit" element={<ProfileEdit />} />
-              <Route path="/trips/create" element={<TripCreate />} />
-              <Route path="/trips/:tripId/edit" element={<TripEdit />} />
-              <Route path="/logout" element={<Logout />} />
-            </Route>
-          </Routes>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
+              <Route element={<GuestGuard />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Route>
+
+              <Route element={<RouteGuard />}>
+                <Route path="/user/profile" element={<Profile />} />
+                <Route path="/user/profile-edit" element={<ProfileEdit />} />
+                <Route path="/trips/create" element={<TripCreate />} />
+                <Route path="/trips/:tripId/edit" element={<TripEdit />} />
+                <Route path="/logout" element={<Logout />} />
+              </Route>
+            </Routes>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
         </div>
-        </LoadingProvider>
+      </LoadingProvider>
     </AuthContextProvider>
   );
 }

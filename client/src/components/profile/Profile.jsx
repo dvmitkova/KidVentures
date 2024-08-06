@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import UserCircleIcon from "@mui/icons-material/AccountCircle";
 import { getUserDetails } from "../../api/auth-api";
+import { useLoading } from "../../hooks/useLoading";
 
 export default function Profile() {
   const { userId } = useParams();
@@ -16,20 +17,24 @@ export default function Profile() {
     country: "",
     profilePicture: "",
   });
+  const { isLoading, setIsLoading } = useLoading();
 
   useEffect(() => {
     const fetchProfileData = async () => {
+      setIsLoading(true);
       try {
         // Fetch profile data based on userId
         const data = await getUserDetails(userId); // Adjust if needed for fetching specific user
         setProfileData(data);
       } catch (error) {
         console.error("Failed to fetch user details:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchProfileData();
-  }, [userId]);
+  }, [userId, setIsLoading]);
 
   return (
     <div className="flex flex-col items-center min-h-screen">

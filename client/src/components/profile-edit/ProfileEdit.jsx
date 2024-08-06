@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+} from "@mui/material";
 import UserCircleIcon from "@mui/icons-material/AccountCircle";
 import { useForm } from "../../hooks/useForm";
 import { getUserDetails, updateProfile } from "../../api/auth-api";
 import { countries } from "../../utils/countries";
+import { useLoading } from "../../hooks/useLoading";
 
 const initialValues = {
   about: "",
@@ -18,19 +25,23 @@ const initialValues = {
 export default function ProfileEdit() {
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState(initialValues);
+  const { isLoading, setIsLoading } = useLoading();
 
   useEffect(() => {
     const fetchProfileData = async () => {
+      setIsLoading(true);
       try {
         const data = await getUserDetails();
         setProfileData(data);
       } catch (error) {
         console.error("Failed to fetch user details:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchProfileData();
-  }, []);
+  }, [setIsLoading]);
 
   const initialFormValues = useMemo(
     () => Object.assign({}, initialValues, profileData),
@@ -40,14 +51,19 @@ export default function ProfileEdit() {
   const { changeHandler, submitHandler, values, setValues } = useForm(
     initialFormValues,
     async (values) => {
+      setIsLoading(true);
       console.log("Submitting values:", values); // Debugging statement
-      const isConfirmed = confirm("Are you sure you want to update your profile?");
+      const isConfirmed = confirm(
+        "Are you sure you want to update your profile?"
+      );
       if (isConfirmed) {
         try {
           await updateProfile(values);
           navigate("/user/profile"); // Redirect to profile page
         } catch (error) {
           console.error("Failed to update profile:", error);
+        } finally {
+          setIsLoading(false);
         }
       }
     }

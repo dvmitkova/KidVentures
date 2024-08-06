@@ -2,18 +2,24 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useLogin } from "../../hooks/useAuth";
 import { useForm } from "../../hooks/useForm";
+import { useLoading } from "../../hooks/useLoading";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const initialValues = { email: "", password: "" };
 
 export default function Login() {
+  const { isLoading, setIsLoading } = useLoading();
   const login = useLogin();
   const navigate = useNavigate();
   const loginHandler = async ({ email, password }) => {
+    setIsLoading(true);
     try {
       await login(email, password);
       navigate("/");
     } catch (err) {
       alert(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
   const { values, changeHandler, submitHandler } = useForm(
@@ -23,6 +29,11 @@ export default function Login() {
 
   return (
     <>
+            {isLoading && ( // Conditionally render the spinner
+        <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">
+          <BeatLoader color="#164e63" />
+        </div>
+      )}
       <section className="bg-gradient-to-b from-amber-100 via-green-50 to-lime-100">
         <div className="container h-full p-4">
           <div className="flex h-full flex-wrap items-center justify-center text-cyan-950">

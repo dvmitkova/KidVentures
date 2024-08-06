@@ -1,30 +1,33 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
+import BeatLoader from "react-spinners/BeatLoader";
+import './useLoading.css';
 
 const LoadingContext = createContext();
 
 export function useLoading() {
-    const context = useContext(LoadingContext);
-    if (!context) {
-        throw new Error("useLoading must be used within a LoadingProvider");
-    }
-    return context;
+  const context = useContext(LoadingContext);
+  if (!context) {
+    throw new Error("useLoading must be used within a LoadingProvider");
+  }
+  return context;
 }
 
 export function LoadingProvider({ children }) {
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const LoadingSpinner = () => (
-        isLoading ? (
-            <div className="loading-spinner">
-                {/* Your spinner or loading indicator here */}
-                <div className="spinner"></div>
-            </div>
-        ) : null
-    );
+  const LoadingSpinner = () =>
+    isLoading ? (
+      <div className="loading-spinner">
+        <BeatLoader color="#164e63" />
+      </div>
+    ) : null;
 
-    return (
-        <LoadingContext.Provider value={{ isLoading, setIsLoading, LoadingSpinner }}>
-            {children}
-        </LoadingContext.Provider>
-    );
+  return (
+    <LoadingContext.Provider
+      value={{ isLoading, setIsLoading }}
+    >
+      <LoadingSpinner />
+      {children}
+    </LoadingContext.Provider>
+  );
 }

@@ -9,6 +9,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { useForm } from "../../hooks/useForm";
 import { useCreateTrip } from "../../hooks/useTrips";
 import { useState } from 'react';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 const initialValues = {
   title: "",
@@ -21,8 +22,10 @@ export default function TripCreate() {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const createHandler = async (values) => {
+    setIsLoading(true);
     try {
       const imageUrl = selectedImage ? URL.createObjectURL(selectedImage) : '';
       const tripData = { ...values, imageUrl };
@@ -31,6 +34,8 @@ export default function TripCreate() {
       navigate(`/trips/${tripId}/details`);
     } catch (err) {
       alert(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,6 +54,12 @@ export default function TripCreate() {
   };
 
   return (
+    <>
+    {isLoading && ( // Conditionally render the spinner
+      <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">
+        <BeatLoader color="#083344" />
+      </div>
+    )}
     <div className="flex flex-row justify-center items-start min-h-screen">
       <Card sx={{ width: "100%", maxWidth: 600, margin: 4 }}>
         <CardContent>
@@ -122,6 +133,7 @@ export default function TripCreate() {
           </form>
         </CardContent>
       </Card>
-    </div>
+      </div>
+      </>
   );
 }
