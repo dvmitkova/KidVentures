@@ -75,11 +75,12 @@
 
 ## 11. Final touches
 - [x] Remove Add to favorites for guests
-- [ ] Spinner for waiting to fetch data - continue with tripDetails!!!
-- [ ] Error handling
+- [x] Spinner for waiting to fetch data - continue with tripDetails!!!
+- [ ] 404!
+- [ ] Error handling - try-catch
 - [x] Data validation 
 - [ ] Documentation
-- [ ] CSS files?
+- [x] CSS files
 - [x] Route guards - logged in users must not see login and register pages!
 - [ ] Unit tests
 - [ ] Connect to an external API? - login with facebook or google

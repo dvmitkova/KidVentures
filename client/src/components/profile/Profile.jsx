@@ -17,7 +17,7 @@ export default function Profile() {
     country: "",
     profilePicture: "",
   });
-  const { isLoading, setIsLoading } = useLoading();
+  const { setIsLoading } = useLoading();
 
   useEffect(() => {
     const fetchProfileData = async () => {
