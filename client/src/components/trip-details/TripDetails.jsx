@@ -133,14 +133,14 @@ export default function TripDetails() {
                 <div className="buttons flex flex-row justify-center">
                   <Link
                     to={`/trips/${tripId}/edit`}
-                    className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                    className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                   >
                     Edit
                   </Link>
                   <button
                     type="submit"
                     onClick={tripDeleteHandler}
-                    className="w-24 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                    className="w-24 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                   >
                     Delete
                   </button>
@@ -202,12 +202,12 @@ export default function TripDetails() {
                       name="comment"
                       value={values.comment}
                       onChange={changeHandler}
-                      className="mt-2 block w-full rounded-md border-gray-300 shadow focus:border-orange-200 focus:ring focus:ring-orange-200 focus:ring-opacity-100"
+                      className="mt-2 block w-full rounded-md border-gray-300 shadow focus:border-cyan-100 focus:ring focus:ring-cyan-100 focus:ring-opacity-100"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+                    className="w-full p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                   >
                     Add comment
                   </button>

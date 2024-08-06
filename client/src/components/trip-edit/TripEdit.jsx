@@ -30,7 +30,6 @@ export default function TripEdit() {
   const { changeHandler, submitHandler, values } = useForm(
     initialFormValues,
     async (values) => {
-
       const isConfirmed = confirm("Are you sure you want to update your trip?");
 
       if (isConfirmed) {
@@ -66,26 +65,51 @@ export default function TripEdit() {
               onChange={changeHandler}
               fullWidth
               variant="outlined"
-              sx={{ marginBottom: 2 }}
+              sx={{
+                marginBottom: 2,
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: '#a5f3fc', // Default outline color
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#0891b2', // Outline color on hover
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#0891b2', // Outline color when focused
+                  },
+                },
+              }}
             />
-            <TextField
-              label="Description"
-              name="content"
-              value={values.content}
-              onChange={changeHandler}
-              fullWidth
-              multiline
-              rows={4}
-              variant="outlined"
-              sx={{ marginBottom: 2 }}
-            />
-            <Button
+<TextField
+  label="Description"
+  name="content"
+  value={values.content}
+  onChange={changeHandler}
+  fullWidth
+  multiline
+  rows={4}
+  variant="outlined"
+  sx={{
+    marginBottom: 2,
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#a5f3fc', // Default outline color
+      },
+      '&:hover fieldset': {
+        borderColor: '#0891b2', // Outline color on hover
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#0891b2', // Outline color when focused
+      },
+    },
+  }}
+/>
+            <button
               type="submit"
-              variant="contained"
-              sx={{ backgroundColor: "#083344", color: "#fff", marginTop: 2 }}
+              className="w-36 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
             >
               Edit Your Story
-            </Button>
+            </button>
           </form>
         </CardContent>
       </Card>

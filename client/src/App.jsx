@@ -18,6 +18,7 @@ import RouteGuard from "./components/common/RouteGuard";
 import ProfileEdit from "./components/profile-edit/ProfileEdit";
 import GuestGuard from "./components/common/GuestGuard";
 import { LoadingProvider } from "./hooks/useLoading";
+import NotFound from "./components/not-found/NotFound";
 
 function App() {
   useScrollToTop();
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/trips/:tripId/edit" element={<TripEdit />} />
                 <Route path="/logout" element={<Logout />} />
               </Route>
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </LoadingProvider>
         </main>

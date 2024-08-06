@@ -91,7 +91,7 @@ export default function Profile() {
           <div className="buttons flex flex-row justify-center">
             <Link
               to={`/user/profile-edit`}
-              className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-orange-200 hover:shadow"
+              className="flex items-center justify-center w-32 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
             >
               Edit profile
             </Link>

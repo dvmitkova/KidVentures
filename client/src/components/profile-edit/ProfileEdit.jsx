@@ -167,7 +167,14 @@ export default function ProfileEdit() {
               <Button
                 variant="contained"
                 component="label"
-                sx={{ backgroundColor: "#083344", color: "#fff" }}
+                sx={{
+                  backgroundColor: "#f5f5f5",
+                  color: "#0c4a6e",
+                  '&:hover': {
+                    backgroundColor: "#cffafe",
+                    boxShadow: 3, 
+                  },
+                }}
               >
                 Change Profile Picture
                 <input
@@ -182,14 +189,28 @@ export default function ProfileEdit() {
               <Button
                 type="button"
                 onClick={() => setValues(initialFormValues)}
-                sx={{ color: "#083344" }}
+                sx={{
+                  backgroundColor: "#f5f5f5",
+                  color: "#0c4a6e",
+                  '&:hover': {
+                    backgroundColor: "#cbd5e1",
+                    boxShadow: 3, 
+                  },
+                }}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 variant="contained"
-                sx={{ backgroundColor: "#083344", color: "#fff" }}
+                sx={{
+                  backgroundColor: "#f5f5f5",
+                  color: "#0c4a6e",
+                  '&:hover': {
+                    backgroundColor: "#cffafe",
+                    boxShadow: 3, 
+                  },
+                }}
               >
                 Save
               </Button>

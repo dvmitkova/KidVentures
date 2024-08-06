@@ -126,7 +126,7 @@ export default function TripCreate() {
             <Button
               type="submit"
               variant="contained"
-              sx={{ backgroundColor: "#083344", color: "#fff", marginTop: 2 }}
+              sx={{ backgroundColor: "#164e63", color: "#fff", marginTop: 2 }}
             >
               Submit Your Story
             </Button>
