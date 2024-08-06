@@ -74,7 +74,7 @@
 ## !!!!!!!!!!!!!!!! Fix Profile Edit !!!!!!!!!!!!!!!!!!
 
 ## 11. Final touches
-- [ ] Remove Add to favorites for guests
+- [x] Remove Add to favorites for guests
 - [ ] Spinner for waiting to fetch data
 - [ ] Error handling
 - [x] Data validation 
