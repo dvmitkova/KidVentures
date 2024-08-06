@@ -76,7 +76,7 @@
 ## 11. Final touches
 - [x] Remove Add to favorites for guests
 - [x] Spinner for waiting to fetch data - continue with tripDetails!!!
-- [ ] 404!
+- [x] 404!
 - [ ] Error handling - try-catch
 - [x] Data validation 
 - [ ] Documentation
