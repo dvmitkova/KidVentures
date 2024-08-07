@@ -53,10 +53,11 @@ KidVentures is deployed on Firebase, but if you need to run it locally, follow t
 
 ## 🖼️ Screenshots
 
-![Home Page](#) 
-![Trip Details](#)  
-![Profile Page](#) 
-![Create a Trip](#)  
+![Home Page](client/public/images/home.jpg) 
+![All trips](client/public/images/alltrips.jpg) 
+![Trip Details](client/public/images/tripdetails.jpg)  
+![Create a Trip](client/public/images/create.jpg)  
+![Profile Page](client/public/images/profile.jpg) 
 
 ## 🛠️ Technologies Used
 
@@ -73,5 +74,3 @@ This project is developed for practice purposes and serves as the final project 
 ---
 
 ✨ *Happy Travels and Adventures!* ✨
-
-![Footer Image](#) 
