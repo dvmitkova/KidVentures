@@ -14,21 +14,20 @@ const initialValues = {
   firstName: "",
   lastName: "",
   country: "",
-  about: "", // Added About Me field
-  profilePicture: "", // Added profile picture field
+  about: "", 
+  profilePicture: "", 
 };
 
 export default function Register() {
   const { isLoading, setIsLoading } = useLoading();
   const [error, setError] = useState("");
-  const [imagePreview, setImagePreview] = useState(null); // New state for image preview
+  const [imagePreview, setImagePreview] = useState(null); 
   const register = useRegister();
   const login = useLogin();
   const navigate = useNavigate();
 
   const registerHandler = async (values) => {
     setIsLoading(true);
-    console.log("Register handler called", values); // Log handler call
     if (values.password !== values.rePassword) {
       setIsLoading(false);
       return setError("Password mismatch!");
@@ -38,7 +37,6 @@ export default function Register() {
       let profilePictureUrl = values.profilePicture;
 
       if (profilePictureUrl instanceof File) {
-        // Handle File object
         const formData = new FormData();
         formData.append("file", profilePictureUrl);
 
@@ -49,13 +47,11 @@ export default function Register() {
         const uploadData = await uploadResponse.json();
         profilePictureUrl = uploadData.url;
       }
-      // Send registration data to server
       await register({ ...values, profilePicture: profilePictureUrl });
 
-      // Automatically login the user after successful registration
       await login(values.email, values.password);
 
-      navigate("/"); // Navigate to home page or another page after login
+      navigate("/"); 
     } catch (err) {
       setError(err.message);
     } finally {
@@ -73,14 +69,14 @@ export default function Register() {
     const file = e.target.files[0];
     if (file) {
       const fileUrl = URL.createObjectURL(file);
-      changeHandler({ target: { name: "profilePicture", value: file } }); // Set the file object
-      setImagePreview(fileUrl); // Set the preview URL
+      changeHandler({ target: { name: "profilePicture", value: file } }); 
+      setImagePreview(fileUrl); 
     }
   };
 
   return (
     <>
-      {isLoading && ( // Conditionally render the spinner
+      {isLoading && ( 
         <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">
           <BeatLoader color="#164e63" />
         </div>

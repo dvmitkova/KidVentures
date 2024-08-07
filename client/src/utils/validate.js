@@ -31,6 +31,5 @@ export const validate = (values) => {
         errors.country = "Country is required.";
     }
 
-    console.log("Validation errors", errors); // Log validation errors
     return errors;
 };

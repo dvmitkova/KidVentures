@@ -25,7 +25,7 @@ const initialValues = {
 export default function ProfileEdit() {
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState(initialValues);
-  const { isLoading, setIsLoading } = useLoading();
+  const { setIsLoading } = useLoading();
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -52,14 +52,13 @@ export default function ProfileEdit() {
     initialFormValues,
     async (values) => {
       setIsLoading(true);
-      console.log("Submitting values:", values); // Debugging statement
       const isConfirmed = confirm(
         "Are you sure you want to update your profile?"
       );
       if (isConfirmed) {
         try {
           await updateProfile(values);
-          navigate("/user/profile"); // Redirect to profile page
+          navigate("/user/profile"); 
         } catch (error) {
           console.error("Failed to update profile:", error);
         } finally {

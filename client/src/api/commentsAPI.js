@@ -8,7 +8,6 @@ const getAll = (tripId) => {
     const params = new URLSearchParams({
         where: `tripId="${tripId}"`,
         load: `author=_ownerId:users`
-        //author = името, което аз давам на prop, ownerId = референцията към съществуващото prop, :users = колекцията, от която взимам данни;
     });
     return requester.get(`${BASE_URL}?${params.toString()}`);
 }

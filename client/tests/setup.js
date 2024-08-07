@@ -3,5 +3,5 @@ import { afterEach } from "vitest";
 import '@testing-library/jest-dom/vitest'
 
 afterEach(() => {
-    cleanup(); //зачистваме дом дървото след всеки тест
+    cleanup(); 
 });

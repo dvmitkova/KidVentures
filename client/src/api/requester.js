@@ -29,19 +29,19 @@ async function requester(method, url, data) {
         const response = await fetch(url, options);
         
         if (response.status === 204) {
-            return; // No content response
+            return; 
         }
 
         const result = await response.json();
 
         if (!response.ok) {
-            console.error('Request failed:', result); // Log error details
+            console.error('Request failed:', result); 
             throw new Error(result.message || 'Something went wrong');
         }
 
         return result;
     } catch (error) {
-        console.error('Error in request:', error); // Log errors during fetch
+        console.error('Error in request:', error); 
         throw error;
     }
 }

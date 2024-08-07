@@ -23,8 +23,7 @@ export default function Profile() {
     const fetchProfileData = async () => {
       setIsLoading(true);
       try {
-        // Fetch profile data based on userId
-        const data = await getUserDetails(userId); // Adjust if needed for fetching specific user
+        const data = await getUserDetails(userId);
         setProfileData(data);
       } catch (error) {
         console.error("Failed to fetch user details:", error);

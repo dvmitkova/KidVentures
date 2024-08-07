@@ -29,7 +29,7 @@ export default function Login() {
 
   return (
     <>
-            {isLoading && ( // Conditionally render the spinner
+            {isLoading && ( 
         <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">
           <BeatLoader color="#164e63" />
         </div>

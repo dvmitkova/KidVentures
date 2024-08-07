@@ -10,12 +10,10 @@ export const AuthContext = createContext({
     logout: () => null,
 });
 
-// Readme - ## 9. Refactoring - 1. Extract auth state from App.js
 export function AuthContextProvider(props) {
   const [authState, setAuthState] = usePersistedState("auth", {});
 
   const changeAuthState = (state) => {
-    //TODO: This is a quick solution - fix it by implementing persistent AuthState!!!
     localStorage.setItem("accessToken", state.accessToken);
 
     setAuthState(state);

@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  Button,
   Card,
   CardContent,
   TextField,
@@ -69,13 +68,13 @@ export default function TripEdit() {
                 marginBottom: 2,
                 '& .MuiOutlinedInput-root': {
                   '& fieldset': {
-                    borderColor: '#a5f3fc', // Default outline color
+                    borderColor: '#a5f3fc', 
                   },
                   '&:hover fieldset': {
-                    borderColor: '#0891b2', // Outline color on hover
+                    borderColor: '#0891b2', 
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: '#0891b2', // Outline color when focused
+                    borderColor: '#0891b2', 
                   },
                 },
               }}
@@ -93,13 +92,13 @@ export default function TripEdit() {
     marginBottom: 2,
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: '#a5f3fc', // Default outline color
+        borderColor: '#a5f3fc', 
       },
       '&:hover fieldset': {
-        borderColor: '#0891b2', // Outline color on hover
+        borderColor: '#0891b2', 
       },
       '&.Mui-focused fieldset': {
-        borderColor: '#0891b2', // Outline color when focused
+        borderColor: '#0891b2', 
       },
     },
   }}

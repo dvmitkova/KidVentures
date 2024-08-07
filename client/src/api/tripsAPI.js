@@ -4,7 +4,6 @@ const BASE_URL = 'http://localhost:3030/data/trips'
 
 export const getAll = async () => {
     const result = await request.get(BASE_URL);
-    //Преобразуваме данните, които идват от сървъра, в масив
     const trips = Object.values(result);
     return trips;
 }
@@ -14,8 +13,6 @@ export const getLatest = async () => {
         sortBy: '_createdOn desc',
         pageSize: 3,
     })
-
-    console.log(urlSearchParams.toString());
 
     const result = await request.get(`${BASE_URL}?${urlSearchParams.toString()}`);
 

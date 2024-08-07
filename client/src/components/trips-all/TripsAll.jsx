@@ -8,7 +8,6 @@ export default function TripsAll() {
   const [trips] = useTripsGetAll();
   const { setIsLoading } = useLoading();
 
-  // Ensuring isLoading is set to true while fetching trips
   useEffect(() => {
     if (trips.length === 0) {
       setIsLoading(true);

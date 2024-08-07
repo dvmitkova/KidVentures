@@ -3,14 +3,12 @@ import { useEffect, useState } from "react";
 export function useForm(initialValues, submitCallback, validate) {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
-    const [touched, setTouched] = useState({}); // Add touched state
+    const [touched, setTouched] = useState({});
 
-    // Reinitialize form
     useEffect(() => {
         setValues(initialValues);
     }, [initialValues]);
 
-    // Validate values on change
     useEffect(() => {
         if (validate) {
             setErrors(validate(values));
@@ -37,15 +35,13 @@ export function useForm(initialValues, submitCallback, validate) {
             setErrors(validationErrors);
 
             if (Object.keys(validationErrors).length > 0) {
-                console.log("Validation failed", validationErrors); // Log validation errors
-                return; // Prevent form submission if there are validation errors
+                return; 
             }
         }
 
-        console.log("Submitting form", values); // Log form submission values
         await submitCallback(values);
         setValues(initialValues);
-        setTouched({}); // Reset touched state after successful submission
+        setTouched({}); 
     };
 
     return {
@@ -54,6 +50,6 @@ export function useForm(initialValues, submitCallback, validate) {
         changeHandler,
         submitHandler,
         setValues,
-        touched // Return touched state
+        touched
     };
 }

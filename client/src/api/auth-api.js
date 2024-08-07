@@ -10,11 +10,8 @@ export const register = (userDetails) =>
 
 export const logout = () => requester.get(`${BASE_URL}/logout`);
 
-// Fetch details of the currently logged-in user
 export const getUserDetails = () => requester.get(`${BASE_URL}/me`);
 
-// Fetch details of a specific user by userId
 export const getUserById = (userId) => requester.get(`${BASE_URL}/${userId}`);
 
-// Update profile of the currently logged-in user
 export const updateProfile = (userDetails) => requester.put(`${BASE_URL}/me`, userDetails);

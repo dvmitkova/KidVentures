@@ -24,13 +24,13 @@ export default function TripDetails() {
   const navigate = useNavigate();
   const { tripId } = useParams();
   const [favorite, setFavorite] = useState(false);
-  const [trip, setTrip] = useState(null); // Manage trip state locally
+  const [trip, setTrip] = useState(null); 
   const [comments, setComments] = useGetAllComments(tripId);
   const createComment = useCreateComment();
   const { isAuthenticated } = useAuthContext();
   const { userId } = useAuthContext();
   
-  // Fetch trip details and set local state
+  
   useEffect(() => {
     const fetchTrip = async () => {
       setIsLoading(true);
@@ -85,7 +85,6 @@ export default function TripDetails() {
     setFavorite(!favorite);
   };
 
-  // Show spinner while loading trip data or during other operations
   if (isLoading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">

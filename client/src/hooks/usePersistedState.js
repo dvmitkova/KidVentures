@@ -6,7 +6,7 @@ export default function usePersistedState(key, initialState) {
 
     if (!persistedAuth) {
       return typeof initialState === "function"
-        ? initialState() //ако входните данни не са просто обект, а са ф-я, която връща обект
+        ? initialState() 
         : initialState;
     }
 
