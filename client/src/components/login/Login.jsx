@@ -89,7 +89,7 @@ export default function Login() {
                         {/*Submit button*/}
                         <div className="mb-12 pb-1 pt-1 text-center">
                           <button
-                            className="w-full p-2 bg-cyan-100 text-cyan-950 rounded hover:bg-orange-100 hover:shadow"
+                            className="w-full p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                             type="submit"
                           >
                             Log in

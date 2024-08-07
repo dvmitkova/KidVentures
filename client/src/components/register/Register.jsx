@@ -264,7 +264,7 @@ export default function Register() {
                         </div>
                         <div className="flex justify-center pt-1 mb-12 pb-1">
                           <button
-                            className="w-full p-2 bg-cyan-100 text-cyan-950 rounded hover:bg-orange-100 hover:shadow"
+                            className="w-full p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                             type="submit"
                           >
                             Register
