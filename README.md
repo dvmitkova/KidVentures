@@ -1,94 +1,77 @@
-# KidVentures - Travel with your kids
+# 🌟 KidVentures 🌟
 
-## 1. Initialize Project
-- [x] Initialize git repo
-- [x] Add server (Softuni Practice Server)
-- [x] Add base vite react project as client
-- [x] CleanUp client
-- [x] Add project components
+<div align="center">
+  <img src="client/public/images/logo.png" alt="KidVentures Logo"  height="150">
+</div>
 
-## 2. React Router
-- [x] Install react-router-dom
-- [x] Setup react-router-dom
-- [x] Add routes in App.jsx
-- [x] Add links in navigation
-  
-## 3. Create Service Layer
-- [x] Service layer architecture - feature based / function based
-- [x] Abstract requester - single endpoint fetcher
-- [x] Add trips api
-- [x] Preseed practice server - after creating trips in postman, copy the objects and paste them in a new file in server/data
+## 📝 Description
+**KidVentures** is your ultimate travel blog for discovering destinations and exciting activities perfect for traveling with kids. Whether you're seeking inspiration for your next family adventure or looking to share your own experiences, KidVentures is the ideal platform.
 
-## 4. Page Implementations
-- [x] Trip list
-- [x] Details 
-    - Details link
-    - Details route
-    - API function - getOne
-- [x] Home - Latest Trips
+## ✨ Features
 
-## 5. Comments (Advanced)
-- [x] Create service for nested resource comments
-- [x] Post comment to server
-- [x] Read comments from server
-- [x] Add comments in the component
-- [x] Clear form
+### 🌍 Guest Features:
+- **🏠 Home Page**: Explore recent trips and a comprehensive list of all trips.
+- **📜 All Trips**: Browse through our extensive list of trips.
+- **🆕 Recent Trips**: Stay updated with the latest adventures shared by the community.
+- **📝 Trip Details**: Detailed pages for each trip, complete with a comment section to read and leave comments.
+- **🔐 Login Page**: Access your account.
+- **🆕 Register Page**: Create a new account to join our community.
 
-## 6. API Hooks
-- [x] Form Hook
-- [x] TripAPI Hooks
-- [x] Comment Hooks
+### 👤 Logged-in User Features:
+- **👤 Profile**: Manage your personal information and settings.
+- **📝 Create a Trip**: Share your adventures with the community.
+- **🔍 Detailed Trip Pages with Exclusive Functionalities**:
+  - ⭐ Add to favorites.
+  - 💬 Add a comment.
+  - ✏️ If you are the owner:
+    - Edit your trips.
+    - Delete your trips.
+- **🚪 Logout**: Securely sign out from your account.
 
-## 7. Authentication
-- [x] Auth API
-    - [x] Login
-    - [x] Register
-    - [x] Logout
-- [x] Auth API hook
-- [x] Auth state & context - state of authenticated user
-- [x] Token management
-- [x] Login
-- [x] Register
-- [x] Logout
-- [ ] Route guards
+### ✅ Registration Data Validation:
+- Ensure accurate and valid registration data for a smooth user experience.
 
-## 8. UI Implementation
-- [x] Dynamic navigation
-- [x] Create a trip
-    - [x] API function
-    - [x] Hook
-- [x] Latest trips
-- [x] Edit Trip
-- [x] Delete Trip
+## 🚀 Installation Instructions
 
-## 9. Refactoring
-- [x] Extract auth state from App component
-- [x] Persist auth state
-- [x] Comments - refactored
-- [x] Add route guards
+KidVentures is deployed on Firebase, but if you need to run it locally, follow these steps:
 
-## 10. Unit testing
-- [x] Installation - npm i -D vitest + config
-- [x] DOM creation - npm i -D jsdom + config
+1. **Client Setup:**
+   - Navigate to the client folder:
+     ```bash
+     cd client
+     npm run dev
+     ```
+   - Open your browser and go to [http://localhost:5173/](http://localhost:5173/)
 
-## !!!!!!!!!!!!!!!! Fix Profile Edit !!!!!!!!!!!!!!!!!!
+2. **Server Setup:**
+   - Navigate to the server folder:
+     ```bash
+     cd server
+     firebase serve
+     ```
+   - Open your browser and go to [http://localhost:5000/kidventures-blog/us-central1/api](http://localhost:5000/kidventures-blog/us-central1/api)
 
-## 11. Final touches
-- [x] Remove Add to favorites for guests
-- [x] Spinner for waiting to fetch data - continue with tripDetails!!!
-- [x] 404!
-- [x] Error handling - try-catch
-- [x] Data validation 
-- [ ] Documentation
-- [x] CSS files
-- [x] Route guards - logged in users must not see login and register pages!
-- [ ] Unit tests
-- [ ] Connect to an external API? - login with facebook or google
-- [ ] Deploy?
+## 🖼️ Screenshots
 
+![Home Page](#) 
+![Trip Details](#)  
+![Profile Page](#) 
+![Create a Trip](#)  
 
-## Notes
-1. Latest Trips
-    1. URL `http://localhost:3030/data/trips?sortBy=_createdOn%20desc&pageSize=3`
-    2. Use URLSearchParams
-2. seedData - line 1341 in server.js
+## 🛠️ Technologies Used
+
+- **ReactJS**
+- **Vite**
+- **TailwindCSS**
+- **Bootstrap**
+- **Material UI**
+
+## 📜 License
+
+This project is developed for practice purposes and serves as the final project for the ReactJS-June 2024 course at SoftUni.
+
+---
+
+✨ *Happy Travels and Adventures!* ✨
+
+![Footer Image](#) 

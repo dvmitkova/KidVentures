@@ -51,9 +51,7 @@ function App() {
             </Routes>
           </LoadingProvider>
         </main>
-        <footer>
-          <Footer />
-        </footer>
+        <Footer />
       </div>
     </AuthContextProvider>
   );

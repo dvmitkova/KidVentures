@@ -1,0 +1,25 @@
+/* Ensure the body and html take up the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Flex container to ensure footer is at the bottom */
+  #box {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Ensure the main content area grows to fill available space */
+  #main {
+    flex: 1;
+  }
+  
+  /* Optional: Style for footer to ensure it appears correctly */
+  footer {
+    background: #f8f9fa; /* You can style this as needed */
+    padding: 1rem;
+    text-align: center;
+  }
+  

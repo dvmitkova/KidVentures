@@ -7,51 +7,51 @@ export default function Navbar() {
   return (
     <header className="bg-gradient-to-r from-cyan-100 via-lime-100 to-amber-100 text-cyan-900 py-4">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-xl md:text-2xl font-bold">
           <Link className="hover:text-cyan-600 transition" to="/">
-          <img
+            <img
               src="/images/logo.png"
               alt="logo"
-              className="w-full h-10"
-          />
+              className="w-36 h-auto"
+            />
           </Link>
         </h1>
-        <nav className="flex space-x-4 font-bold">
-          <div className="flex space-x-4">
-            <Link className="hover:text-cyan-600 transition" to="/trips/all">
+        <nav className="flex space-x-2 md:space-x-4 font-bold">
+          <div className="flex space-x-2 md:space-x-4">
+            <Link className="text-xs md:text-sm lg:text-base hover:text-cyan-600 transition" to="/trips/all">
               All trips
             </Link>
             <Link
-              className="hover:text-cyan-600 transition"
+              className="text-xs md:text-sm lg:text-base hover:text-cyan-600 transition"
               to="/trips/latest"
             >
               Latest trips
             </Link>
           </div>
           {!isAuthenticated ? (
-            <div className="flex space-x-4">
-              <Link className="hover:text-cyan-600 transition" to="/register">
+            <div className="flex space-x-2 md:space-x-4">
+              <Link className="text-xs md:text-sm lg:text-base hover:text-cyan-600 transition" to="/register">
                 Register
               </Link>
-              <Link className="hover:text-cyan-600 transition" to="/login">
+              <Link className="text-xs md:text-sm lg:text-base hover:text-cyan-600 transition" to="/login">
                 Login
               </Link>
             </div>
           ) : (
-            <div className="flex space-x-4">
+            <div className="flex space-x-2 md:space-x-4">
               <Link
-                className="hover:text-cyan-600 transition"
+                className="text-xs md:text-sm lg:text-base hover:text-cyan-600 transition"
                 to="/trips/create"
               >
                 Create a trip
               </Link>
               <Link
-                className="hover:text-cyan-600 transition"
+                className="text-xs md:text-sm lg:text-base hover:text-cyan-600 transition"
                 to="/user/profile"
               >
                 {email} Profile
               </Link>
-              <Link className="hover:text-cyan-600 transition" to="/logout">
+              <Link className="text-xs md:text-sm lg:text-base hover:text-cyan-600 transition" to="/logout">
                 Logout
               </Link>
             </div>

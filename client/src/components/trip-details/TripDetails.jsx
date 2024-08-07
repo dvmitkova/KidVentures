@@ -30,7 +30,6 @@ export default function TripDetails() {
   const { isAuthenticated } = useAuthContext();
   const { userId } = useAuthContext();
   
-  
   useEffect(() => {
     const fetchTrip = async () => {
       setIsLoading(true);
@@ -98,8 +97,8 @@ export default function TripDetails() {
   }
 
   return (
-    <div className="flex flex-row justify-center items-start min-h-screen">
-      <Card sx={{ width: "100%", height: "auto", margin: 4 }}>
+    <div className="flex flex-col md:flex-row md:justify-center items-start min-h-screen">
+      <Card sx={{ width: "100%", maxWidth: 600, margin: 4 }}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -117,6 +116,7 @@ export default function TripDetails() {
               variant="h5"
               component="div"
               sx={{ fontWeight: "bold", color: "#083344" }}
+              className="text-xl md:text-2xl"
             >
               {trip.title}
             </Typography>
@@ -124,29 +124,30 @@ export default function TripDetails() {
               variant="body2"
               color="text.secondary"
               sx={{ color: "#083344" }}
+              className="text-sm md:text-base"
             >
               {trip.content}
             </Typography>
             <div className="mt-4 flex flex-col items-center">
               {isOwner && (
-                <div className="buttons flex flex-row justify-center">
+                <div className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
                   <Link
                     to={`/trips/${tripId}/edit`}
-                    className="flex items-center justify-center w-24 mr-10 ml-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
+                    className="flex items-center justify-center w-full md:w-24 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                   >
                     Edit
                   </Link>
                   <button
                     type="submit"
                     onClick={tripDeleteHandler}
-                    className="w-24 mr-10 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
+                    className="w-full md:w-24 p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                   >
                     Delete
                   </button>
                 </div>
               )}
               {isAuthenticated && !isOwner && (
-                <div className="favorite flex flex-col items-center space-y-2">
+                <div className="flex flex-col items-center space-y-2 mt-4">
                   <IconButton
                     onClick={handleFavoriteToggle}
                     aria-label="add to favorites"
@@ -167,6 +168,7 @@ export default function TripDetails() {
                       fontWeight: "bold",
                       color: favorite ? "#083344" : "#a8a29e",
                     }}
+                    className="text-sm md:text-base"
                   >
                     {favorite ? "Added to favorites" : "Not a favorite"}
                   </Typography>
@@ -178,12 +180,12 @@ export default function TripDetails() {
       </Card>
 
       {/* Comments Section */}
-      <div className="flex flex-col items-center mr-10 w-full">
-        <Card sx={{ width: "100%", maxWidth: 600, height: "auto", margin: 4 }}>
+      <div className="flex flex-col items-center w-full md:w-3/4 lg:w-2/3">
+        <Card sx={{ width: "100%", maxWidth: 600, margin: 4 }}>
           <CardContent>
             {isAuthenticated && (
               <div>
-                <div className="items-center text-sm font-medium">
+                <div className="text-sm font-medium">
                   <h1 className="text-xl font-bold text-cyan-950 mb-8">
                     Share your thoughts with us:
                   </h1>
@@ -202,6 +204,7 @@ export default function TripDetails() {
                       value={values.comment}
                       onChange={changeHandler}
                       className="mt-2 block w-full rounded-md border-gray-300 shadow focus:border-cyan-100 focus:ring focus:ring-cyan-100 focus:ring-opacity-100"
+                      rows={4}
                     />
                   </div>
                   <button
@@ -213,8 +216,8 @@ export default function TripDetails() {
                 </form>
               </div>
             )}
-            <div className="items-center text-sm font-medium">
-              <h1 className="text-xl font-bold text-cyan-950 mt-8 mb-6">
+            <div className="text-sm font-medium mt-8">
+              <h1 className="text-xl font-bold text-cyan-950 mb-6">
                 All comments:
               </h1>
             </div>
