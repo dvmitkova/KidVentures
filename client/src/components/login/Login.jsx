@@ -29,7 +29,7 @@ export default function Login() {
 
   return (
     <>
-            {isLoading && ( 
+      {isLoading && (
         <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">
           <BeatLoader color="#164e63" />
         </div>
@@ -89,7 +89,7 @@ export default function Login() {
                         {/*Submit button*/}
                         <div className="mb-12 pb-1 pt-1 text-center">
                           <button
-                            className="w-full p-2 bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
+                            className="w-full p-2 font-semibold bg-stone-200 text-cyan-950 rounded hover:bg-cyan-100 hover:shadow"
                             type="submit"
                           >
                             Log in
@@ -97,12 +97,13 @@ export default function Login() {
                         </div>
 
                         {/*Register button*/}
-                        <div className="flex items-center justify-between pb-6">
-                          <p className="mb-0 me-2">Don&apos;t have an account?</p>
+                        <div className="flex items-center justify-center pb-6">
+                          <p className="mb-0 me-2">
+                            Don&apos;t have an account?
+                          </p>
                           <Link
                             to="/register"
-                            type="button"
-                            className="inline-block rounded border-2 border-cyan-700 px-6 pb-[6px] pt-2 text-xs font-semibold uppercase leading-normal text-cyan-950 transition duration-150 ease-in-out hover:border-cyan-900 hover:bg-cyan-900 hover:text-white focus:border-cyan-800 focus:bg-cyan-700 focus:text-white focus:outline-none active:border-cyan-900 active:bg-cyan-800"
+                            className="rounded-md bg-cyan-100 px-3.5 py-2.5 text-sm font-semibold text-cyan-950 shadow-sm hover:bg-stone-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                           >
                             Register
                           </Link>
