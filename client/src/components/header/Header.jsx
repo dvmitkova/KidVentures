@@ -3,7 +3,7 @@ export default function Header() {
     <div className="relative isolate overflow-hidden bg-gray-900 py-44 sm:py-72">
       <img
         alt=""
-        src="/images/header3.jpg"
+        src="/images/header2.jpg"
         className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
       />
       <div className="absolute inset-0 -z-10 bg-cyan-50 opacity-40"></div>
