@@ -1,6 +1,6 @@
 import requester from "./requester"
 
-const BASE_URL = 'http://localhost:3030/data/comments';
+const BASE_URL = `${import.meta.env.VITE_API_URL}/data/comments`;
 
 const create = (tripId, text) => requester.post(BASE_URL, { tripId, text });
 

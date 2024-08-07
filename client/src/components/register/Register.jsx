@@ -14,14 +14,14 @@ const initialValues = {
   firstName: "",
   lastName: "",
   country: "",
-  about: "", 
-  profilePicture: "", 
+  about: "",
+  profilePicture: "",
 };
 
 export default function Register() {
   const { isLoading, setIsLoading } = useLoading();
   const [error, setError] = useState("");
-  const [imagePreview, setImagePreview] = useState(null); 
+  const [imagePreview, setImagePreview] = useState(null);
   const register = useRegister();
   const login = useLogin();
   const navigate = useNavigate();
@@ -40,10 +40,13 @@ export default function Register() {
         const formData = new FormData();
         formData.append("file", profilePictureUrl);
 
-        const uploadResponse = await fetch("http://localhost:3030/upload", {
-          method: "POST",
-          body: formData,
-        });
+        const uploadResponse = await fetch(
+          `${import.meta.env.VITE_API_URL}/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
         const uploadData = await uploadResponse.json();
         profilePictureUrl = uploadData.url;
       }
@@ -51,7 +54,7 @@ export default function Register() {
 
       await login(values.email, values.password);
 
-      navigate("/"); 
+      navigate("/");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -69,14 +72,14 @@ export default function Register() {
     const file = e.target.files[0];
     if (file) {
       const fileUrl = URL.createObjectURL(file);
-      changeHandler({ target: { name: "profilePicture", value: file } }); 
-      setImagePreview(fileUrl); 
+      changeHandler({ target: { name: "profilePicture", value: file } });
+      setImagePreview(fileUrl);
     }
   };
 
   return (
     <>
-      {isLoading && ( 
+      {isLoading && (
         <div className="fixed inset-0 flex items-center justify-center bg-white opacity-75 z-50">
           <BeatLoader color="#164e63" />
         </div>

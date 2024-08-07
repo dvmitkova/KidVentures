@@ -6,8 +6,8 @@ export const AuthContext = createContext({
   email: "",
   accessToken: "",
   isAuthenticated: false,
-    changeAuthState: (authState = {}) => null,
-    logout: () => null,
+  changeAuthState: (authState = {}) => null,
+  logout: () => null,
 });
 
 export function AuthContextProvider(props) {
@@ -19,8 +19,9 @@ export function AuthContextProvider(props) {
     setAuthState(state);
   };
 
-    const logout = () => {
-      setAuthState(null)
+  const logout = () => {
+    localStorage.removeItem("accessToken");//problem??
+    setAuthState(null);
   };
 
   const contextData = {
